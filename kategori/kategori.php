@@ -45,7 +45,7 @@ $total_categories = count($all_categories);
 
 <div class="recent-orders">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2>Table Kategori</h2>
+        <h1>Table Kategori</h1>
         <div style="display: flex; align-items: center;">
             <input type="text" id="liveSearch" placeholder="Cari Kategori..." 
                    style="padding: 8px 12px; width: 120px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;">

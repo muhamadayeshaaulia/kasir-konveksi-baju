@@ -44,7 +44,7 @@ $total_users = count($all_users);
 
 <div class="recent-orders">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2>Table User</h2>
+        <h1>Table User</h1>
         
         <div style="display: flex; align-items: center;">
             <input type="text" id="liveSearch" placeholder="Cari User..." 

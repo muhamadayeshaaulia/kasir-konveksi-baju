@@ -284,7 +284,7 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
 </style>
 
 <div class="form-container">
-    <h2 class="form-title"><?= isset($_GET['id']) ? 'Edit Data Pengguna' : 'Tambah Pengguna Baru' ?></h2>
+    <h1 class="form-title"><?= isset($_GET['id']) ? 'Edit Data Pengguna' : 'Tambah Pengguna Baru' ?></h1>
     
     <?php if ($pesan_error): ?>
     <div class="alert alert-error">
