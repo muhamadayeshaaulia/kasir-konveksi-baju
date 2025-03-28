@@ -1,11 +1,10 @@
 <?php
-session_start();
-
-// Hapus semua session
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 session_unset();
 session_destroy();
 
-// Redirect ke halaman login
 header('Location: login.php');
 exit();
 ?>

@@ -263,7 +263,7 @@ $conn_notif->close();
         }
     </style>
      <div class="form-container">
-        <h2 class="form-title">Tambah Kategori Baru</h2>
+        <h1 class="form-title">Tambah Kategori Baru</h1>
         
         <?php if ($pesan_error): ?>
     <div class="alert alert-error">

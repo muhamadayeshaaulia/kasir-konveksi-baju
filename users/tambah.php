@@ -295,7 +295,7 @@ $koneksi->close();
         }
     </style>
     <div class="form-container">
-    <h2 class="form-title">Tambah Pengguna Baru</h2>
+    <h1 class="form-title">Tambah Pengguna Baru</h1>
     
     <?php if ($pesan_error): ?>
     <div class="alert alert-error">
