@@ -1,5 +1,5 @@
 <div class="recent-orders">
-    <h2>Kategori Ukuran Baju dan Celana</h2>
+    <h2>Ukuran CELANA</h2>
     
     <div style="margin-bottom: 10px;">
         <a href="index.php?page=uk_baju" class="<?php 
@@ -12,7 +12,7 @@
                 $currentPage = isset($_GET['page'])? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'uk_celana') ? 'active' : '';
                 ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-            <i class="fas fa-vest"></i> Ukuran Celana
+            <i class="fas fa-vest"></i> Tambah Ukuran Celana
         </a>
     </div>
 
@@ -20,17 +20,15 @@
         <thead>
             <tr style="background-color: var(--color-background);">
                 <th style="padding:12px; border:1px solid #ddd;">ID</th>
-                <th style="padding:12px; border:1px solid #ddd;">Nama Kategori</th>
-                <th style="padding:12px; border:1px solid #ddd;">Jenis</th>
-                <th style="padding:12px; border:1px solid #ddd;">Aksi</th>
+                <th style="padding:12px; border:1px solid #ddd;">UKURAN CELANA</th>
+                <th style="padding:12px; border:1px solid #ddd;">AKSI</th>
             </tr>
         </thead>
         <tbody>
             <!-- Contoh data baju -->
             <tr>
                 <td style="padding:12px; border:1px solid #ddd;">1</td>
-                <td style="padding:12px; border:1px solid #ddd;">Kaos Polos</td>
-                <td style="padding:12px; border:1px solid #ddd;">Baju</td>
+                <td style="padding:12px; border:1px solid #ddd;">30</td>
                 <td style="padding:12px; border:1px solid #ddd;">
                     <button style="background-color:#FFD700; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
                         <i class="fas fa-edit"></i> Edit
@@ -43,9 +41,8 @@
             
             <!-- Contoh data celana -->
             <tr>
-                <td style="padding:12px; border:1px solid #ddd;">2</td>
-                <td style="padding:12px; border:1px solid #ddd;">Jeans Slim</td>
-                <td style="padding:12px; border:1px solid #ddd;">Celana</td>
+            <td style="padding:12px; border:1px solid #ddd;">2</td>
+            <td style="padding:12px; border:1px solid #ddd;">31</td>
                 <td style="padding:12px; border:1px solid #ddd;">
                     <button style="background-color:#FFD700; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
                         <i class="fas fa-edit"></i> Edit
@@ -58,9 +55,8 @@
             
             <!-- Contoh data lainnya -->
             <tr>
-                <td style="padding:12px; border:1px solid #ddd;">3</td>
-                <td style="padding:12px; border:1px solid #ddd;">Kemeja Formal</td>
-                <td style="padding:12px; border:1px solid #ddd;">Baju</td>
+            <td style="padding:12px; border:1px solid #ddd;">3</td>
+            <td style="padding:12px; border:1px solid #ddd;">32</td>
                 <td style="padding:12px; border:1px solid #ddd;">
                     <button style="background-color:#FFD700; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
                         <i class="fas fa-edit"></i> Edit

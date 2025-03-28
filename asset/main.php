@@ -11,6 +11,20 @@
                 echo "<h1>Akses Ditolak</h1>";
             }
             break;
+        case 'tusers':
+            if ($level == 'Admin' || $level == 'Owner') {
+                include('./users/tambah.php');
+            } else {
+                echo "<h1>Akses Ditolak</h1>";
+            }
+            break;
+            case 'eusers':
+                if ($level == 'Admin' || $level == 'Owner') {
+                    include('./users/edit.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
         case 'pendapatan':
             if ($level == 'Admin' || $level == 'Owner') {
                 include('./pendapatan/pendapatan.php');
@@ -28,6 +42,20 @@
         case 'kategori':
             if ($level == 'Admin') {
                 include('./kategori/kategori.php');
+            } else {
+                echo "<h1>Akses Ditolak</h1>";
+            }
+            break;
+        case 'uk_baju':
+            if ($level == 'Admin') {
+                include('./kategori/uk_baju.php');
+            } else {
+                echo "<h1>Akses Ditolak</h1>";
+            }
+            break;
+        case 'uk_celana':
+            if ($level == 'Admin') {
+                include('./kategori/uk_celana.php');
             } else {
                 echo "<h1>Akses Ditolak</h1>";
             }
