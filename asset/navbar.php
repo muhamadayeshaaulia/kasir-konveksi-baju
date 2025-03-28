@@ -9,7 +9,7 @@
                     <span class="material-icons-sharp active">
                         light_mode
                     </span>
-                    <span class="material-icons-sharp">
+                    <span class="material-icons-sharp ">
                         dark_mode
                     </span>
                 </div>

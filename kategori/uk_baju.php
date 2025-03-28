@@ -2,6 +2,9 @@
     <h2>Ukuran Baju</h2>
     
     <div style="margin-bottom: 10px;">
+    <a href="index.php?page=kategori" style="margin-right: 5px; background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
+            <i class="fas fa-plus-circle"></i> Kategori
+        </a>
         <a href="index.php?page=uk_baju" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'uk_baju') ? 'active' : '';

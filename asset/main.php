@@ -46,6 +46,20 @@
                 echo "<h1>Akses Ditolak</h1>";
             }
             break;
+        case 'tkategori':
+            if ($level == 'Admin') {
+                include('./kategori/kategori_tambah.php');
+            } else {
+                echo "<h1>Akses Ditolak</h1>";
+            }
+            break;
+            case 'ekategori':
+                if ($level == 'Admin') {
+                    include('./kategori/kategori_edit.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
         case 'uk_baju':
             if ($level == 'Admin') {
                 include('./kategori/uk_baju.php');

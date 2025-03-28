@@ -220,8 +220,15 @@ aside .sidebar .message-count{
     border-radius: var(--border-radius-1);
 }
 
-main{
+main {
     margin-top: 1.4rem;
+    height: calc(100vh - 1.4rem);
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+main::-webkit-scrollbar {
+    display: none;
 }
 
 main .analyse{
@@ -864,119 +871,4 @@ main .recent-orders a{
         font-weight: 600;
         color: var(--color-dark);
     }
-}
-
-/* Gaya untuk loading overlay */
-#loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.8); /* Latar belakang semi-transparan */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Pastikan loading di atas elemen lain */
-}
-
-/* Gaya untuk animasi loading */
-.loader {
-    border: 8px solid #f3f3f3; /* Warna lingkaran luar */
-    border-top: 8px solid #3498db; /* Warna lingkaran atas */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite; /* Animasi muter */
-}
-
-/* Animasi muter */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
- /* Styling untuk modal */
- .modal {
-    display: none; /* Sembunyikan modal secara default */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    z-index: 1000;
-    width: 300px;
-    text-align: center;
-    animation: slideIn 0.3s ease-out;
-}
-
-/* Animasi untuk modal */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -60%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-/* Overlay untuk latar belakang gelap */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-/* Tombol di dalam modal */
-.modal button {
-    margin: 5px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Tombol OK */
-.modal button.ok {
-    background-color: #4CAF50;
-    color: white;
-}
-
-/* Tombol Cancel */
-.modal button.cancel {
-    background-color: #f44336;
-    color: white;
-}
-
-/* Styling untuk simbol tanda tanya */
-.question-mark {
-    font-size: 48px;
-    color: #4CAF50;
-    animation: bounce 1s infinite;
-}
-
-/* Animasi untuk simbol tanda tanya */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Styling untuk teks di dalam modal */
-.modal p {
-    margin: 10px 0;
-    font-size: 18px;
 }

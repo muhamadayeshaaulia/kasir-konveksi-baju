@@ -11,10 +11,22 @@ if ($conn->connect_error) {
 }
 
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
+
 $delete_message = isset($_SESSION['delete_message']) ? $_SESSION['delete_message'] : '';
 
 unset($_SESSION['delete_status']);
 unset($_SESSION['delete_message']);
+
+$sql = "SELECT user_id, username, email, level FROM user";
+$result = $conn->query($sql);
+$all_users = [];
+if ($result->num_rows > 0) {
+    $all_users = $result->fetch_all(MYSQLI_ASSOC);
+}
+
+$show_all = isset($_GET['show_all']) && $_GET['show_all'] == '1';
+$users_to_display = $show_all ? $all_users : array_slice($all_users, 0, 3);
+$total_users = count($all_users);
 ?>
 
 <?php if ($delete_status): ?>
@@ -46,11 +58,6 @@ unset($_SESSION['delete_message']);
     </div>
 
     <div id="userTableContainer">
-        <?php
-        $sql = "SELECT user_id, username, email, level FROM user";
-        $result = $conn->query($sql);
-        ?>
-        
         <table style="width:100%; border-collapse:collapse; text-align:left;">
             <thead>
                 <tr style="background-color:var(--color-background);">
@@ -62,8 +69,8 @@ unset($_SESSION['delete_message']);
                 </tr>
             </thead>
             <tbody id="userTableBody">
-                <?php if ($result->num_rows > 0): ?>
-                    <?php while($row = $result->fetch_assoc()): ?>
+                <?php if (!empty($users_to_display)): ?>
+                    <?php foreach($users_to_display as $row): ?>
                         <tr>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["user_id"]) ?></td>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["username"]) ?></td>
@@ -74,13 +81,21 @@ unset($_SESSION['delete_message']);
                                         style="background-color:#FFD700; padding:5px 10px; border:none; border-radius:3px; cursor:pointer; margin-right:5px;">
                                     Edit
                                 </button>
-                                <button onclick="confirmDelete(<?= $row["user_id"] ?>)" 
-                                        style="background-color:#f44336; color:white; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
-                                    Hapus
-                                </button>
+                                <?php if ($_SESSION['level'] === 'Admin'): ?>
+                                    <button onclick="confirmDelete(<?= $row['user_id'] ?>)" 
+                                            style="background-color:#f44336; color:white; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
+                                        Hapus
+                                    </button>
+                                <?php else: ?>
+                                    <button onclick="showAdminOnlyMessage()" 
+                                            style="background-color:#f44336; color:white; padding:5px 10px; border:none; border-radius:3px; cursor:pointer; opacity:0.6;" 
+                                            title="Hanya admin yang bisa menghapus">
+                                        Hapus
+                                    </button>
+                                <?php endif; ?>
                             </td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
                         <td colspan="5" style="padding:12px; text-align:center;">Tidak ada data user</td>
@@ -88,10 +103,60 @@ unset($_SESSION['delete_message']);
                 <?php endif; ?>
             </tbody>
         </table>
+        
+        <?php if ($total_users > 3): ?>
+        <div style="text-align: center; margin-top: 20px;">
+            <?php if (!$show_all): ?>
+                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=1'"
+                        style="background-color: #6C9BCF; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
+                    Tampilkan Semua (<?= $total_users ?>)
+                </button>
+            <?php else: ?>
+                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=0'"
+                        style="background-color: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
+                    Tampilkan Sedikit
+                </button>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 
 <script>
+function showAdminOnlyMessage() {
+    // Buat elemen notifikasi
+    const notification = document.createElement('div');
+    notification.id = 'adminNotification';
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.left = '50%';
+    notification.style.transform = 'translateX(-50%)';
+    notification.style.backgroundColor = '#f44336';
+    notification.style.color = 'white';
+    notification.style.padding = '15px';
+    notification.style.borderRadius = '5px';
+    notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+    notification.style.zIndex = '1000';
+    notification.style.display = 'flex';
+    notification.style.justifyContent = 'space-between';
+    notification.style.alignItems = 'center';
+    notification.style.minWidth = '300px';
+    
+    notification.innerHTML = `
+        <span>Hanya admin yang dapat menghapus user!</span>
+        <button onclick="this.parentElement.style.display='none'" 
+                style="background:none; border:none; color:white; font-weight:bold; cursor:pointer; margin-left:15px;">
+            ×
+        </button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(function(){
+        notification.style.display = 'none';
+    }, 3000);
+}
+
 document.getElementById('liveSearch').addEventListener('input', function() {
     const searchValue = this.value.toLowerCase();
     const rows = document.querySelectorAll('#userTableBody tr');
