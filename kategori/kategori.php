@@ -11,6 +11,7 @@ if ($conn->connect_error) {
 }
 
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
+
 $delete_message = isset($_SESSION['delete_message']) ? $_SESSION['delete_message'] : '';
 
 unset($_SESSION['delete_status']);

@@ -52,25 +52,3 @@ Orders.forEach(order => {
     tr.innerHTML = trContent;
     document.querySelector('.order').appendChild(tr);
 });
-function showLoading() {
-    console.log('Menampilkan loading...');
-    document.getElementById('loading').style.display = 'flex';
-}
-function hideLoading() {
-    console.log('Menyembunyikan loading...');
-    document.getElementById('loading').style.display = 'none';
-}
-
-document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        console.log('Link diklik:', link.href); 
-        showLoading();
-        setTimeout(() => {
-            window.location.href = link.href;
-        }, 1000);
-    });
-});
-
-window.addEventListener('load', () => {
-    hideLoading();
-});
