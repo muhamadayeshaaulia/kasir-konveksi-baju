@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('./app/log_access.php');
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
