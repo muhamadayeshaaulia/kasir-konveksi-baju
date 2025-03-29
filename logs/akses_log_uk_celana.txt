@@ -1,0 +1,14 @@
+IP: ::1 | Waktu: 2025-03-29 14:39:29 | Halaman: uk_celana
+IP: ::1 | Waktu: 2025-03-29 14:39:33 | Halaman: uk_celana
+IP: ::1 | Waktu: 2025-03-29 15:41:20 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:27:39 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:27:41 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:27:44 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:28:11 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:28:13 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:29:08 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:30:43 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:31:52 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:32:03 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:52:47 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:52:57 | Halaman: uk_celana | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin

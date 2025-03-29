@@ -1,0 +1,2 @@
+IP: ::1 | Waktu: 2025-03-29 16:54:24 | Halaman: tkategori | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 16:54:28 | Halaman: tkategori | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin

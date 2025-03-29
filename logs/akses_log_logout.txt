@@ -1,0 +1,13 @@
+IP: ::1 | Waktu: 2025-03-29 14:33:03 | Halaman: logout
+IP: ::1 | Waktu: 2025-03-29 14:35:08 | Halaman: logout
+IP: ::1 | Waktu: 2025-03-29 14:37:27 | Halaman: logout
+IP: ::1 | Waktu: 2025-03-29 14:40:41 | Halaman: logout
+IP: ::1 | Waktu: 2025-03-29 14:45:16 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0 | Role: Owner
+IP: ::1 | Waktu: 2025-03-29 15:04:39 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Role: Guest
+IP: ::1 | Waktu: 2025-03-29 15:10:35 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 18:03:57 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 18:04:14 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
+IP: ::1 | Waktu: 2025-03-29 19:47:27 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-03-29 19:47:50 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
+IP: ::1 | Waktu: 2025-03-29 19:48:12 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-03-29 19:54:28 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
