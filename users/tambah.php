@@ -1,14 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-
-$koneksi = new mysqli($servername, $username, $password, $dbname);
-
-if ($koneksi->connect_error) {
-    die("Koneksi gagal: " . $koneksi->connect_error);
-}
+require './app/koneksi.php';
 
 $pesan_error = isset($_GET['error']) ? $_GET['error'] : '';
 $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';

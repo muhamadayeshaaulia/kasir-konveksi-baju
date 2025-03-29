@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+require './app/koneksi.php';
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
 
 $delete_message = isset($_SESSION['delete_message']) ? $_SESSION['delete_message'] : '';
@@ -18,7 +8,7 @@ unset($_SESSION['delete_status']);
 unset($_SESSION['delete_message']);
 
 $sql = "SELECT user_id, username, email, level FROM user";
-$result = $conn->query($sql);
+$result = $koneksi->query($sql);
 $all_users = [];
 if ($result->num_rows > 0) {
     $all_users = $result->fetch_all(MYSQLI_ASSOC);

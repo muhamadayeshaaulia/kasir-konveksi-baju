@@ -1,13 +1,11 @@
 <?php
-$conn_notif = new mysqli("localhost", "root", "", "kasir_konveksi");
-if ($conn_notif->connect_error) die("Koneksi gagal: " . $conn_notif->connect_error);
+require './app/koneksi.php';
 
 $pesan_error = isset($_GET['error']) ? urldecode($_GET['error']) : '';
 $pesan_sukses = isset($_GET['sukses']) ? urldecode($_GET['sukses']) : '';
 $errors = isset($_GET['errors']) ? json_decode(urldecode($_GET['errors']), true) : [];
 $old_input = isset($_GET['old']) ? json_decode(urldecode($_GET['old']), true) : [];
 
-$conn_notif->close();
 ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>

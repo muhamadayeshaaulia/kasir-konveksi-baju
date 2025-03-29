@@ -1,14 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require './app/koneksi.php';
 
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
 
@@ -19,7 +10,7 @@ unset($_SESSION['delete_message']);
 
 // Get all categories
 $sql = "SELECT id_kategori, nama_kategori FROM kategori";
-$result = $conn->query($sql);
+$result = $koneksi->query($sql);
 $all_categories = [];
 if ($result->num_rows > 0) {
     $all_categories = $result->fetch_all(MYSQLI_ASSOC);
@@ -49,21 +40,35 @@ $total_categories = count($all_categories);
         <div style="display: flex; align-items: center;">
             <input type="text" id="liveSearch" placeholder="Cari Kategori..." 
                    style="padding: 8px 12px; width: 120px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;">
-            
+                   
                    <a href="index.php?page=tkategori" style="margin-right: 5px; background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                     Kategori
+                     Tambah Kategori
                     </a>
+                    <?php
+                    require_once './app/koneksi.php';
+                    $query_user = "SELECT COUNT(id_ukbaju) as total_baju FROM uk_baju";
+                    $result_user = mysqli_query($koneksi, $query_user);
+                    $data_baju = mysqli_fetch_assoc($result_user);
+                    $total_baju = $data_baju['total_baju'];
+                    ?>
                     <a href="index.php?page=uk_baju" class="<?php 
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'uk_baju') ? 'active' : '';
                             ?>" style="margin-right: 5px; background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                        <i class="fas fa-tshirt"></i>Ukuran Baju
+                            Ukuran Baju | <?php echo $total_baju; ?>
                     </a>
+                    <?php
+                    require_once './app/koneksi.php';
+                    $query_user = "SELECT COUNT(id_ukcelana) as total_celana FROM uk_celana";
+                    $result_user = mysqli_query($koneksi, $query_user);
+                    $data_celana = mysqli_fetch_assoc($result_user);
+                    $total_celana = $data_celana['total_celana'];
+                    ?>
                     <a href="index.php?page=uk_celana" class="<?php
                             $currentPage = isset($_GET['page'])? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'uk_celana') ? 'active' : '';
                             ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                        <i class="fas fa-vest"></i> Ukuran Celana
+                            Ukuran Celana | <?php echo $total_celana; ?>
                     </a>
                 </div>
         </div>

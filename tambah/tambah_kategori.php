@@ -1,14 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-
-$koneksi = new mysqli($servername, $username, $password, $dbname);
-
-if ($koneksi->connect_error) {
-    die("Koneksi gagal: " . $koneksi->connect_error);
-}
+require '../app/koneksi.php';
 
 $nama_kategori = trim($koneksi->real_escape_string($_POST['nama_kategori'] ?? ''));
 

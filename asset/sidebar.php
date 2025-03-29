@@ -18,13 +18,23 @@
             <h3>Dashboard</h3>
         </a>
 
-        <?php if ($level == 'Admin' || $level == 'Owner'):?>
+        <?php if ($level == 'Admin' || $level == 'Owner'): ?>
+            <?php
+            require_once 'app/koneksi.php';
+            
+            $query_user = "SELECT COUNT(user_id) as total_user FROM user";
+            $result_user = mysqli_query($koneksi, $query_user);
+            $data_user = mysqli_fetch_assoc($result_user);
+            $total_user = $data_user['total_user'];
+            ?>
+            
             <a href="index.php?page=users" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'users') ? 'active' : '';
             ?>">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Users</h3>
+                <span class="message-count"><?php echo $total_user; ?></span>
             </a>
         <?php endif; ?>
 
@@ -49,25 +59,49 @@
         <?php endif; ?>
 
         <?php if ($level == 'Admin'): ?>
+            <?php
+            require_once 'app/koneksi.php';
+            $tabel_kategori = ['uk_baju', 'uk_celana', 'kategori'];
+            $total_kategori = 0;
+            foreach ($tabel_kategori as $tabel) {
+                $query = "SHOW TABLES LIKE '$tabel'";
+                $result = mysqli_query($koneksi, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    $total_kategori++;
+                }
+            }
+            ?>
             <a href="index.php?page=kategori" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'kategori') ? 'active' : '';
             ?>">
                 <span class="material-icons-sharp">add</span>
                 <h3>Kategori Barang</h3>
-                <span class="message-count">10</span>
+                <span class="message-count"><?php echo $total_kategori; ?></span>
             </a>
         <?php endif; ?>
 
         <?php if ($level == 'Admin'): ?>
-            <a href="index.php?page=stok" class="<?php 
-                $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-                echo ($currentPage == 'stok') ? 'active' : '';
-            ?>">
-                <span class="material-icons-sharp">edit</span>
-                <h3>Stock Bahan</h3>
-                <span class="message-count">27</span>
-            </a>
+        <?php
+        require_once 'app/koneksi.php';
+        $tabel_bahan = ['produk', 'bahan'];
+        $total_bahan = 0;
+        foreach ($tabel_bahan as $tabel) {
+            $query = "SHOW TABLES LIKE '$tabel'";
+            $result = mysqli_query($koneksi, $query);
+            if (mysqli_num_rows($result) > 0) {
+                $total_bahan++;
+            }
+        }
+        ?>
+        <a href="index.php?page=stok" class="<?php 
+            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+            echo ($currentPage == 'stok') ? 'active' : '';
+        ?>">
+            <span class="material-icons-sharp">edit</span>
+            <h3>Produk bahan</h3>
+            <span class="message-count"><?php echo $total_bahan; ?></span>
+        </a>
         <?php endif; ?>
 
         <?php if ($level == 'Admin' || $level == 'Kasir'): ?>

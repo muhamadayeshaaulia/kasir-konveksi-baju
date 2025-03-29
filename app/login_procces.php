@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'app.php';
-
 $_SESSION['user_id'] = $user_id;
 $_SESSION['username'] = $username; 
 $_SESSION['level'] = $user_level; 

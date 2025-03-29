@@ -1,21 +1,13 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require '../app/koneksi.php';
 
 if (isset($_GET['id'])) {
     $id_kategori = $_GET['id'];
     $sql = "DELETE FROM kategori WHERE id_kategori = ?";
     
-    if ($stmt = $conn->prepare($sql)) {
+    if ($stmt = $koneksi->prepare($sql)) {
         $stmt->bind_param("i", $id_kategori);
         if ($stmt->execute()) {
             if ($stmt->affected_rows > 0) {
@@ -40,7 +32,7 @@ if (isset($_GET['id'])) {
     $_SESSION['delete_message'] = 'ID kategori tidak ditemukan.';
 }
 
-$conn->close();
+$koneksi->close();
 
 header("Location: ../index.php?page=kategori");
 exit();

@@ -36,7 +36,7 @@
 
             <div class="reminders">
                 <div class="header">
-                    <h2>Reminders</h2>
+                    <h2>New Transaction</h2>
                     <span class="material-icons-sharp">
                         notifications_none
                     </span>
@@ -81,12 +81,14 @@
                 </div>
 
                 <div class="notification add-reminder">
+                <a href="./index.php?page=transaksi">
                     <div>
                         <span class="material-icons-sharp">
-                            add
+                        add
                         </span>
-                        <h3>Add Reminder</h3>
+                        <h3>Add Transaction</h3>
                     </div>
+                    </a>
                 </div>
 
             </div>

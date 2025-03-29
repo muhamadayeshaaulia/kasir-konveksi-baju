@@ -9,7 +9,7 @@ $total_users = $stmt->fetch()['total_users'];
                 <div class="sales">
                     <div class="status">
                         <div class="info">
-                            <h3>Stok bahan</h3>
+                            <h3>Total Transaksi</h3>
                             <h1>1000</h1>
                         </div>
                         <div class="progresss">
