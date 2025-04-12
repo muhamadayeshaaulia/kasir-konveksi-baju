@@ -28,50 +28,73 @@ $total_categories = count($all_categories);
     <button onclick="document.getElementById('notification').style.display='none'" style="background:none; border:none; color:white; font-weight:bold; cursor:pointer; margin-left:15px;">×</button>
 </div>
 
-<script>
-    setTimeout(function(){
-        document.getElementById('notification').style.display = 'none';
-    }, 3000);
-</script>
 <?php endif; ?>
 
+<link rel="stylesheet" href="./style/celana.css">
 <div class="recent-orders">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h1>Ukuran Celana</h1>
-        <div style="display: flex; align-items: center;">
-            <input type="text" id="liveSearch" placeholder="Cari Ukuran..." 
-                   style="padding: 8px 12px; width: 120px; border: 1px solid #ddd; border-radius: 4px; margin-right: 10px;">
-            
-                   <?php
+        <div style="display: flex; align-items: center; flex-wrap: wrap;">
+            <div style="width: 100%; margin-bottom: 10px; order: 1;">
+                <input type="text" id="liveSearch" placeholder="Cari Ukuran Celana." 
+                       style="padding: 8px 12px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div class="desktop-view" style="display: flex; align-items: center; order: 2;">
+                <?php
                     require_once './app/koneksi.php';
                     $query_user = "SELECT COUNT(id_kategori) as total_kategori FROM kategori";
                     $result_user = mysqli_query($koneksi, $query_user);
                     $data_kategori = mysqli_fetch_assoc($result_user);
                     $total_kategori = $data_kategori['total_kategori'];
                     ?>
-                   <a href="index.php?page=kategori" style="margin-right: 5px; background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                     Kategori | <?php echo $total_kategori; ?>
+                <a href="index.php?page=kategori" style="background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Kategori | (<?php echo $total_kategori; ?>)
+                </a>
+
+                <?php
+                $query_baju = "SELECT COUNT(id_ukbaju) as total_baju FROM uk_baju";
+                $result_baju = mysqli_query($koneksi, $query_baju);
+                $data_baju = mysqli_fetch_assoc($result_baju);
+                $total_baju = $data_baju['total_baju'];
+                ?>
+                <a href="index.php?page=uk_baju" class="<?php 
+                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                        echo ($currentPage == 'uk_baju') ? 'active' : '';
+                        ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
+                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Ukuran Baju (<?php echo $total_baju; ?>)
+                </a>
+                <a href="index.php?page=tcelana" class="<?php
+                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                        echo ($currentPage == 'tcelana') ? 'active' : '';
+                        ?>" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none;">
+                        <i class="fas fa-pants" style="margin-right: 8px;"></i> Tambah Ukuran
+                </a>
+            </div>
+            <div class="dropdown" style="position: relative; display: none; order: 2;">
+                <button class="dropbtn" style="background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                    All Menu ▼
+                </button>
+                <div class="dropdown-content" style="display: none; position: absolute; right: 0; background-color: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;">
+                    <a href="index.php?page=kategori" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
+                        <i class="fas fa-plus" style="margin-right: 8px;"></i> Kategori (<?php echo $total_kategori; ?>)
                     </a>
-                    <?php
-                    require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_ukbaju) as total_baju FROM uk_baju";
-                    $result_user = mysqli_query($koneksi, $query_user);
-                    $data_baju = mysqli_fetch_assoc($result_user);
-                    $total_baju = $data_baju['total_baju'];
-                    ?>
+                    
                     <a href="index.php?page=uk_baju" class="<?php 
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'uk_baju') ? 'active' : '';
-                            ?>" style="margin-right: 5px; background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                            Ukuran Baju | <?php echo $total_baju; ?>
+                            ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Ukuran Baju (<?php echo $total_baju; ?>)
                     </a>
-                    <a href="index.php?page=tcelana" class="<?php
-                            $currentPage = isset($_GET['page'])? $_GET['page'] : 'dashboard';
-                            echo ($currentPage == 'uk_celana') ? 'active' : '';
-                            ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block;">
-                            Tambah Ukuran
+                    
+                    <a href="index.php?page=uk_tcelana" class="<?php
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                            echo ($currentPage == 'tcelana') ? 'active' : '';
+                            ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block;">
+                            <i class="fas fa-pants" style="margin-right: 8px;"></i> Tambah Ukuran
                     </a>
                 </div>
+            </div>
+        </div>
         </div>
     <div id="categoryTableContainer">
         <table style="width:100%; border-collapse:collapse; text-align:left;">
@@ -126,25 +149,4 @@ $total_categories = count($all_categories);
     </div>
 </div>
 
-<script>
-document.getElementById('liveSearch').addEventListener('input', function() {
-    const searchValue = this.value.toLowerCase();
-    const rows = document.querySelectorAll('#categoryTableBody tr');
-    
-    rows.forEach(row => {
-        const categoryName = row.cells[1].textContent.toLowerCase();
-        
-        if (categoryName.includes(searchValue)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
-
-function confirmDelete(id_ukcelana) {
-    if (confirm("Apakah Anda yakin ingin menghapus ukuran ini?")) {
-        window.location.href = './delete/delete_celana.php?id=' + id_ukcelana;
-    }
-}
-</script>
+<script src="./js/celana.js"></script>

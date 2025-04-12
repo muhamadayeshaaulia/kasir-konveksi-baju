@@ -1,43 +1,56 @@
 <?php
 require './app/app.php';
+include './app/koneksi.php';
 $current_user_level = isset($_SESSION['level']) ? $_SESSION['level'] : '';
 $stmt = $pdo->query('SELECT COUNT(*) as total_users FROM user');
 $total_users = $stmt->fetch()['total_users'];
+
+$query = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM transaksi");
+$data = mysqli_fetch_assoc($query);
+
+$sql = "SELECT SUM(stok) AS total_stok FROM produk";
+$result = $koneksi->query($sql);
+
+$total_stok = 0;
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $total_stok = $row["total_stok"];
+}
 ?>
 <h1>Dashboard</h1>
             <div class="analyse">
                 <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Total Transaksi</h3>
-                            <h1>1000</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+81%</p>
-                            </div>
+                <div class="status">
+                    <div class="info">
+                        <h3>Total Transaksi</h3>
+                        <h1><?php echo $data['total']; ?></h1>
+                    </div>
+                    <div class="progresss">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>+81%</p>
                         </div>
                     </div>
                 </div>
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Pendapatan</h3>
-                            <h1>24,981</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>-48%</p>
-                            </div>
+            </div>
+            <div class="visits">
+                <div class="status">
+                    <div class="info">
+                        <h3>Stok</h3>
+                        <h1><?php echo number_format($total_stok, 0, ',', '.'); ?></h1>
+                    </div>
+                    <div class="progresss">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>-2%</p>
                         </div>
                     </div>
                 </div>
+            </div>
                 <div class="searches">
                     <div class="status">
                         <div class="info">
@@ -82,16 +95,7 @@ $total_users = $stmt->fetch()['total_users'];
     </div>
 </div>
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kasir_konveksi";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require './app/koneksi.php';
 
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
 $delete_message = isset($_SESSION['delete_message']) ? $_SESSION['delete_message'] : '';
@@ -106,11 +110,6 @@ unset($_SESSION['delete_message']);
     <button onclick="document.getElementById('notification').style.display='none'" style="background:none; border:none; color:white; font-weight:bold; cursor:pointer; margin-left:15px;">×</button>
 </div>
 
-<script>
-    setTimeout(function(){
-        document.getElementById('notification').style.display = 'none';
-    }, 3000);
-</script>
 <?php endif; ?>
 <div class="recent-orders">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -130,7 +129,7 @@ unset($_SESSION['delete_message']);
     <div id="userTableContainer">
         <?php
         $sql = "SELECT user_id, username, email, level FROM user";
-        $result = $conn->query($sql);
+        $result = $koneksi->query($sql);
         $all_users = [];
         if ($result->num_rows > 0) {
             $all_users = $result->fetch_all(MYSQLI_ASSOC);
@@ -182,12 +181,12 @@ unset($_SESSION['delete_message']);
         <?php if ($total_users > 3): ?>
         <div style="text-align: center; margin-top: 20px;">
             <?php if (!$show_all): ?>
-                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=1'"
+                <button onclick="window.location.href='?dashboard=<?= $_GET['dashboard'] ?? '' ?>&show_all=1'"
                         style="background-color: #6C9BCF; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
                     Tampilkan Semua (<?= $total_users ?>)
                 </button>
             <?php else: ?>
-                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=0'"
+                <button onclick="window.location.href='?dashboard=<?= $_GET['dashboard'] ?? '' ?>&show_all=0'"
                         style="background-color: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
                     Tampilkan Sedikit
                 </button>
@@ -197,58 +196,4 @@ unset($_SESSION['delete_message']);
     </div>
 </div>
 
-<script>
-    function showAdminOnlyMessage() {
-    const notification = document.createElement('div');
-    notification.id = 'adminNotification';
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.left = '50%';
-    notification.style.transform = 'translateX(-50%)';
-    notification.style.backgroundColor = '#f44336';
-    notification.style.color = 'white';
-    notification.style.padding = '15px';
-    notification.style.borderRadius = '5px';
-    notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
-    notification.style.zIndex = '1000';
-    notification.style.display = 'flex';
-    notification.style.justifyContent = 'space-between';
-    notification.style.alignItems = 'center';
-    notification.style.minWidth = '300px';
-    
-    notification.innerHTML = `
-        <span>Hanya admin yang dapat menghapus user</span>
-        <button onclick="this.parentElement.style.display='none'" 
-                style="background:none; border:none; color:white; font-weight:bold; cursor:pointer; margin-left:15px;">
-            ×
-        </button>
-    `;
-    
-    document.body.appendChild(notification);
-
-    setTimeout(function(){
-        notification.style.display = 'none';
-    }, 3000);
-}
-document.getElementById('liveSearch').addEventListener('input', function() {
-    const searchValue = this.value.toLowerCase();
-    const rows = document.querySelectorAll('#userTableBody tr');
-    
-    rows.forEach(row => {
-        const username = row.cells[1].textContent.toLowerCase();
-        const email = row.cells[2].textContent.toLowerCase();
-        
-        if (username.includes(searchValue) || email.includes(searchValue)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
-
-function confirmDelete(userId) {
-    if (confirm("Apakah Anda yakin ingin menghapus user ini?")) {
-        window.location.href = './delete/delete_user.php?id=' + userId;
-    }
-}
-</script>
+<script src="./js/dashboardu.js"></script>

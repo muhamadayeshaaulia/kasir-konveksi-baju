@@ -114,7 +114,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin' || $level == 'Owner'): ?>
+        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Kasir'): ?>
             <a href="index.php?page=laporan" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'laporan') ? 'active' : '';

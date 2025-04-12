@@ -1,6 +1,9 @@
 <main>
     <?php
     switch ($currentPage) {
+        case'page':
+            include('page');
+            break;
         case 'dashboard':
             include('./dashboard/dashboard.php');
             break;
@@ -151,8 +154,36 @@
                 echo "<h1>Akses Ditolak</h1>";
             }
             break;
+            case 'pelunasan':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./transaksi/pelunasan.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
+            case 'lunas':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/lunas.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
+            case 'dp':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/dp.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
+            case 'print':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/print_lunas.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
         case 'laporan':
-            if ($level == 'Admin' || $level == 'Owner') {
+            if ($level == 'Admin' || $level == 'Owner' || $level == 'Kasir') {
                 include('./laporan/laporan.php');
             } else {
                 echo "<h1>Akses Ditolak</h1>";
@@ -165,7 +196,8 @@
             include('./logout.php');
             break;
         default:
-            include('./dashboard/dashboard.php');
+        header("HTTP/1.0 404 Not Found");
+        include('./ErrorDocument/404.php');
             break;
     }
     ?>

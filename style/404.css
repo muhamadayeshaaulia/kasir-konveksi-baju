@@ -1,0 +1,58 @@
+.error-container {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-size: 120px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 0;
+    animation: bounceIn 1s ease-out;
+}
+
+p {
+    color: #555;
+    animation: fadeIn 1.5s ease-in-out;
+}
+.go-back-btn {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    background-color: #3498db;
+    padding: 12px 36px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.go-back-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(30px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

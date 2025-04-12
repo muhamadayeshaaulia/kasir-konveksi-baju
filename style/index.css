@@ -54,7 +54,9 @@ body{
     overflow-x: hidden;
     color: var(--color-dark);
     background-color: var(--color-background);
+    animation: pageLoad 1s ease-out;
 }
+
 
 a{
     color: var(--color-dark);
@@ -93,6 +95,65 @@ b{
     color: var(--color-dark);
 }
 
+.notification-login {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #6C9BCF;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+}
+
+.notification-login.show {
+    display: flex;
+    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+}
+
+.notification-login .check-icon {
+    margin-right: 15px;
+    font-size: 30px;
+    transform: scale(0);
+    animation: checkMark 0.5s ease-out forwards;
+}
+
+@keyframes checkMark {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .text-muted{
     color: var(--color-info-dark);
 }
@@ -119,6 +180,15 @@ b{
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 12rem auto 23rem;
+    animation: pageLoad 1s ease-out;
+}
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 aside{
@@ -225,6 +295,7 @@ main {
     height: calc(100vh - 1.4rem);
     overflow-y: scroll;
     scrollbar-width: none;
+    padding-bottom: 100px;
 }
 
 main::-webkit-scrollbar {
@@ -387,6 +458,7 @@ main .recent-orders a{
 
 .right-section{
     margin-top: 1.4rem;
+    padding-bottom: 100px;
 }
 
 .right-section .nav{
@@ -541,6 +613,27 @@ main .recent-orders a{
     align-items: center;
     gap: 0.6rem;
 }
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-dark-variant);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--color-light);
+    margin-top: 2rem;
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    max-width: 1100px;
+    margin: 0 auto;
+    right: 150px;
+    left: 0;            
+}
+
+
 @media screen and (max-width: 1200px) {
     .container{
         width: 95%;
@@ -613,6 +706,12 @@ main .recent-orders a{
         left: -100%;
         display: none;
         animation: showMenu 0.4s ease forwards;
+    }
+    .notification-login {
+        top: 80px;
+        right: 30px;
+        padding: 12px 18px;
+        font-size: 16px;
     }
 
     @keyframes showMenu {
@@ -711,7 +810,6 @@ main .recent-orders a{
     }
 
 }
-
 /* Tambahkan ini ke bagian bawah file CSS Anda */
 @media screen and (max-width: 320px) {
     .container{
@@ -730,6 +828,12 @@ main .recent-orders a{
         left: -100%;
         display: none;
         animation: showMenu 0.4s ease forwards;
+    }
+    .notification-login {
+        top: 80px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 14px;
     }
 
     @keyframes showMenu {
