@@ -48,13 +48,13 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin'): ?>
-            <a href="index.php?page=analytics" class="<?php 
+        <?php if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir'): ?>
+            <a href="index.php?page=chat" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'analytics') ? 'active' : '';
             ?>">
-                <span class="material-icons-sharp">insights</span>
-                <h3>Analytics</h3>
+                <span class="material-icons-sharp">chat</span>
+                <h3>Chat</h3>
             </a>
         <?php endif; ?>
 

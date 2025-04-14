@@ -35,9 +35,9 @@
                 echo "<h1>Akses Ditolak</h1>";
             }
             break;
-        case 'analytics':
-            if ($level == 'Admin') {
-                include('./analytics/analytics.php');
+        case 'chat':
+            if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir') {
+                include('./chat/chat.php');
             } else {
                 echo "<h1>Akses Ditolak</h1>";
             }

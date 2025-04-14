@@ -94,6 +94,57 @@ p{
 b{
     color: var(--color-dark);
 }
+#chat-notification {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    color: black;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+}
+
+#chat-notification a {
+    color: #00acc1;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+#chat-notification a:hover {
+    color: #00796b;
+}
+
+#chat-notification.show {
+    opacity: 1;
+}
+
+#chat-notification.hide {
+    opacity: 0;
+    display: none;
+}
+
+#chat-notification .material-icons {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+    #chat-notification {
+        font-size: 14px;
+        padding: 12px 16px;
+        margin: 5px 10px;
+    }
+}
+
 
 .notification-login {
     display: none;
@@ -153,7 +204,6 @@ b{
         opacity: 0;
     }
 }
-
 .text-muted{
     color: var(--color-info-dark);
 }
@@ -615,25 +665,34 @@ main .recent-orders a{
 }
 .footer {
     text-align: center;
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     background-color: var(--color-white);
     color: var(--color-dark-variant);
     font-size: 0.85rem;
     border-top: 1px solid var(--color-light);
-    margin-top: 2rem;
     box-shadow: var(--box-shadow);
+    width: 100%;
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    max-width: 1100px;
-    margin: 0 auto;
-    right: 150px;
-    left: 0;            
 }
 
+@media screen and (min-width: 1024px) {
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
+    }
 
+    body {
+        padding-bottom: 4rem;
+    }
+
+    main, .right-section {
+        padding-bottom: 4rem;
+    }
+}
 @media screen and (max-width: 1200px) {
     .container{
         width: 95%;
@@ -686,6 +745,13 @@ main .recent-orders a{
     main table tbody tr td:last-child,
     main table tbody tr td:first-child{
         display: none;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
     }
 
 }
@@ -808,9 +874,16 @@ main .recent-orders a{
     .right-section .nav button span{
         font-size: 2rem;
     }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
+    }
 
 }
-/* Tambahkan ini ke bagian bawah file CSS Anda */
+
 @media screen and (max-width: 320px) {
     .container{
         width: 100%;
@@ -930,6 +1003,13 @@ main .recent-orders a{
     .right-section .nav button span{
         font-size: 2rem;
     }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -974,5 +1054,12 @@ main .recent-orders a{
         content: attr(data-label);
         font-weight: 600;
         color: var(--color-dark);
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
     }
 }

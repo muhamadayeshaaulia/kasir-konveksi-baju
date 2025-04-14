@@ -37,6 +37,10 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         <?php include('./asset/navbar.php'); ?>
     </div>
 
+    <div id="chat-notification" style="display:none; background:#e0f7fa; border-left:4px solid #00acc1; padding:10px; margin:10px 20px;">
+        💬 Pesan baru di forum chat! <a href="?page=chat" style="margin-left:10px;">Buka Chat</a>
+        </div>
+
     <?php
     if (isset($_GET['login']) && $_GET['login'] == 'success') :
     ?>
@@ -69,5 +73,29 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             }
         };
     </script>
+    <script>
+let lastMessageId = null;
+
+function checkNewChatMessage() {
+  fetch("./chat/check_last_message.php")
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.id !== lastMessageId) {
+        if (lastMessageId !== null) {
+          const notif = document.getElementById("chat-notification");
+          notif.style.display = "block";
+
+          setTimeout(() => notif.style.display = "none", 10000);
+        }
+
+        lastMessageId = data.id;
+      }
+    });
+}
+
+setInterval(checkNewChatMessage, 5000);
+checkNewChatMessage();
+</script>
+
 </body>
 </html>
