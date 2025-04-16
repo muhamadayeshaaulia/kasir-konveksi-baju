@@ -43,7 +43,7 @@
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'pendapatan') ? 'active' : '';
             ?>">
-                <span class="material-icons-sharp">receipt_long</span>
+                <span class="material-icons-sharp">money</span>
                 <h3>Pendapatan</h3>
             </a>
         <?php endif; ?>
@@ -75,7 +75,7 @@
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'kategori') ? 'active' : '';
             ?>">
-                <span class="material-icons-sharp">add</span>
+                <span class="material-icons-sharp">category</span>
                 <h3>Kategori Barang</h3>
                 <span class="message-count"><?php echo $total_kategori; ?></span>
             </a>
@@ -98,7 +98,7 @@
             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             echo ($currentPage == 'stok') ? 'active' : '';
         ?>">
-            <span class="material-icons-sharp">edit</span>
+            <span class="material-icons-sharp">inventory_2</span>
             <h3>Produk bahan custom</h3>
             <span class="message-count"><?php echo $total_bahan; ?></span>
         </a>
@@ -109,7 +109,7 @@
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'transaksi') ? 'active' : '';
             ?>">
-                <span class="material-icons-sharp">inventory</span>
+                <span class="material-icons-sharp">payments</span>
                 <h3>Transaksi</h3>
             </a>
         <?php endif; ?>

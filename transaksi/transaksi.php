@@ -255,7 +255,7 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
         </form>
         
     </div>
-    <script src="./js/transaksi.js?v=<?php echo time(); ?>"></script>
+    <script src="./js/transaksi.js"></script>
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
 <script>
     Swal.fire({

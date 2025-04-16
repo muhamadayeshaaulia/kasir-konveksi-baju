@@ -44,18 +44,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kode_transaksi'])) {
         exit();
     }
 
+    $stmt_info = mysqli_prepare($koneksi, "SELECT pembelian, jumlah FROM transaksi WHERE kode_transaksi = ?");
+    mysqli_stmt_bind_param($stmt_info, "s", $kode_transaksi);
+    mysqli_stmt_execute($stmt_info);
+    $result_info = mysqli_stmt_get_result($stmt_info);
+    $row_info = mysqli_fetch_assoc($result_info);
+
+    $pembelian = $row_info['pembelian'];
+    $jumlah = (int)$row_info['jumlah'];
+    $tanggal_pelunasan = date('Y-m-d H:i:s');
+
+    if ($pembelian === 'jahit') {
+        $estimasi = date('Y-m-d H:i:s', strtotime($tanggal_pelunasan . ($jumlah >= 24 ? ' +14 days' : ' +7 days')));
+    } else {
+        $estimasi = $tanggal_pelunasan;
+    }
+
     $query = "UPDATE transaksi SET 
         status_pembayaran = 'lunas',
         remaining_amount = 0,
         bukti_lunas = ?,
-        tanggal_pelunasan = NOW()
+        tanggal_pelunasan = NOW(),
+        estimasi = ?
         WHERE kode_transaksi = ?";
     $stmt = mysqli_prepare($koneksi, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $bukti_lunas, $kode_transaksi);
+    mysqli_stmt_bind_param($stmt, "sss", $bukti_lunas, $estimasi, $kode_transaksi);
 
     if (mysqli_stmt_execute($stmt)) {
         header("Location: ../index.php?page=pelunasan&success=1&kode=" . urlencode($kode_transaksi));
     } else {
+
         if (!empty($target_file) && file_exists($target_file)) {
             unlink($target_file);
         }
@@ -65,3 +83,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kode_transaksi'])) {
 } else {
     header("Location: ../index.php?page=pelunasan");
 }
+?>

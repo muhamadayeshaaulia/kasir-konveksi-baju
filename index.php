@@ -96,6 +96,5 @@ function checkNewChatMessage() {
 setInterval(checkNewChatMessage, 5000);
 checkNewChatMessage();
 </script>
-
 </body>
 </html>

@@ -4,7 +4,7 @@ require '../app/koneksi.php';
 $tanggal = date('Y-m-d H:i:s');
 $kode_transaksi = $_POST['kode_transaksi'];
 $nama_customer = $_POST['nama_customer'];
-$pembelian = $_POST['pembelian']; // 'jahit' atau 'siap pakai'
+$pembelian = $_POST['pembelian'];
 
 // Default values
 $cstm_produk = $cstm_bahan = $cstm_ukuran = '-';
@@ -40,21 +40,19 @@ $tax = $_POST['tax'];
 $diskon = $_POST['diskon'] ?? 0;
 $total = $_POST['total'];
 
-$metode_pembayaran = $_POST['metode_pembayaran']; // dp / lunas
-$pembayaran = $_POST['pembayaran']; // cash / transfer / qris
+$metode_pembayaran = $_POST['metode_pembayaran'];
+$pembayaran = $_POST['pembayaran'];
 $status_pembayaran = $metode_pembayaran;
 
 $dp_amount = ($metode_pembayaran == 'dp') ? $total * 0.5 : 0;
 $remaining_amount = $total - $dp_amount;
 
-// Shipping data
-$status_pengiriman = $_POST['status_pengiriman']; // ambil di tempat / kirim
+$status_pengiriman = $_POST['status_pengiriman'];
 $alamat = ($status_pengiriman == 'kirim') ? $_POST['alamat'] : "-";
 $email = ($status_pengiriman == 'kirim') ? $_POST['email'] : "-";
 $nohp = ($status_pengiriman == 'kirim') ? $_POST['nohp'] : "-";
 $resi = ($status_pengiriman == 'kirim') ? $_POST['resi'] : "-";
 
-// Payment proof upload
 $bukti_dp = '';
 $bukti_lunas = '';
 $target_file = '';
@@ -97,7 +95,6 @@ if ($pembayaran === 'transfer' || $pembayaran === 'qris') {
     }
 }
 
-// Database insertion - MATCHING YOUR SCHEMA EXACTLY
 $query = "INSERT INTO transaksi (
     kode_transaksi, nama_customer, kategori, pembelian,
     cstm_produk, produk, cstm_bahan, bahan,
@@ -125,7 +122,6 @@ if (!$stmt) {
     die("Error preparing statement: " . mysqli_error($koneksi));
 }
 
-// Parameters in exact order of the columns above
 $params = [
     $kode_transaksi,
     $nama_customer,

@@ -46,36 +46,36 @@ $total_users = count($all_users);
             <div class="desktop-view" style="display: flex; align-items: center; order: 2;">
             <?php
                     require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'siap pakai'";
+                    $query_user = "SELECT COUNT(id_trx) as lunas_pakai FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'siap pakai'";
                     $result_user = mysqli_query($koneksi, $query_user);
                     $data_trx = mysqli_fetch_assoc($result_user);
-                    $total_trx = $data_trx['total_trx'];
+                    $lunas_pakai = $data_trx['lunas_pakai'];
                     ?>
                 <a href="index.php?page=lunas" class="<?php 
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                         echo ($currentPage == 'lunas') ? 'active' : '';
                         ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
-                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Siap Pakai (<?php echo $total_trx; ?>)
+                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Siap Pakai (<?php echo $lunas_pakai; ?>)
                 </a>
                 <?php
                     require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='dp' AND pembelian = 'jahit'";
+                    $query_user = "SELECT COUNT(id_trx) as dp_jahit FROM transaksi Where status_pembayaran='dp' AND pembelian = 'jahit'";
                     $result_user = mysqli_query($koneksi, $query_user);
                     $data_trx = mysqli_fetch_assoc($result_user);
-                    $total_trx = $data_trx['total_trx'];
+                    $dp_jahit = $data_trx['dp_jahit'];
                     ?>
                 <a href="index.php?page=dcustom" style="background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
-                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Deposit Jahit (<?php echo $total_trx; ?>)
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Deposit Jahit (<?php echo $dp_jahit; ?>)
                 </a>
                 <?php
                     require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'jahit'";
+                    $query_user = "SELECT COUNT(id_trx) as lunas_jahit FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'jahit'";
                     $result_user = mysqli_query($koneksi, $query_user);
                     $data_trx = mysqli_fetch_assoc($result_user);
-                    $total_trx = $data_trx['total_trx'];
+                    $lunas_jahit = $data_trx['lunas_jahit'];
                     ?>
                 <a href="index.php?page=lcustom" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
-                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Lunas Jahit (<?php echo $total_trx; ?>)
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Lunas Jahit (<?php echo $lunas_jahit; ?>)
                 </a>
             </div>
             
@@ -88,19 +88,19 @@ $total_users = count($all_users);
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'lunas') ? 'active' : '';
                             ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
-                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i>Lunas Siap Pakai (<?php echo $total_trx; ?>)
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i>Lunas Siap Pakai (<?php echo $lunas_pakai; ?>)
                     </a>
                     <a href="index.php?page=dcustom" class="<?php 
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'dcustom') ? 'active' : '';
                             ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
-                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Deposit Jahit (<?php echo $total_trx; ?>)
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Deposit Jahit (<?php echo $dp_jahit; ?>)
                     </a>
                     <a href="index.php?page=lcustom" class="<?php 
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'lcustom') ? 'active' : '';
                             ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
-                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Jahit (<?php echo $total_trx; ?>)
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Jahit (<?php echo $lunas_jahit; ?>)
                     </a>
                 </div>
             </div>
