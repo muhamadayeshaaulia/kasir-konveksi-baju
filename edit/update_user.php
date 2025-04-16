@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $koneksi->real_escape_string($_POST['username']);
     $email = $koneksi->real_escape_string($_POST['email']);
     $level = $koneksi->real_escape_string($_POST['level']);
-    $level_diizinkan = ['Owner', 'Admin', 'Kasir'];
+    $level_diizinkan = ['Owner', 'Admin', 'Kasir','Demo'];
     if (!in_array($level, $level_diizinkan)) {
         $level = 'Kasir';
     }

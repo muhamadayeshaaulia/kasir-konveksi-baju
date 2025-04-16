@@ -70,6 +70,7 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
                 <option value="Owner" <?= $pengguna['level'] === 'Owner' ? 'selected' : '' ?>>Owner</option>
                 <option value="Admin" <?= $pengguna['level'] === 'Admin' ? 'selected' : '' ?>>Admin</option>
                 <option value="Kasir" <?= $pengguna['level'] === 'Kasir' ? 'selected' : '' ?>>Kasir</option>
+                <option value="Demo" <?= $pengguna['level'] === 'Demo' ? 'selected' : '' ?>>Demo</option>
             </select>
         </div>
         

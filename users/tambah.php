@@ -87,6 +87,7 @@ $koneksi->close();
                 <option value="Owner" <?= (isset($_POST['level']) && $_POST['level'] === 'Owner' ? 'selected' : '' )?>>Owner</option>
                 <option value="Admin" <?= (isset($_POST['level']) && $_POST['level'] === 'Admin' ? 'selected' : '')?>>Admin</option>
                 <option value="Kasir" <?= (isset($_POST['level']) && $_POST['level'] === 'Kasir' ? 'selected' : '') ?>>Kasir</option>
+                <option value="Demo" <?= (isset($_POST['level']) && $_POST['level'] === 'Demo' ? 'selected' : '') ?>>Demo</option>
             </select>
         </div>
         

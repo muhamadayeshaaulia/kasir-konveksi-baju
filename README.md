@@ -1,11 +1,15 @@
 yehsa.dev
 =====================================
 My-Website: https://yesha.ftik.my.id
+Demo : https://konveksi.eduzillen.id
+
+email demo : demo@gmail.com
+sandi : demo
 
 Administrasi dan transaksi Toko Konveksi
 Created by : yesha.Dev
  
- Data sudah di Enkripsi menggunakan hash dengan algotitma bcrpty, Csrf dan Pdo 
+ Data sudah di Enkripsi menggunakan hash dengan algoritma bcrpty, Csrf dan Pdo 
 ==========================================================
 
 Transaksi kasir yang kompleks memudahkan toko untuk mengelola 
