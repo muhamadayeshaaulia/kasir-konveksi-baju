@@ -109,6 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="file" name="image" accept="image/*">
         </div>
 
-        <button type="submit" class="btn">Simpan Perubahan</button>
+        <button type="submit" class="btn"
+        <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner' && $_SESSION['level'] !== 'Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin, owner dan kasir yang bisa menyimpan"'; ?>
+        >Simpan Perubahan</button>
     </form>
 </main>

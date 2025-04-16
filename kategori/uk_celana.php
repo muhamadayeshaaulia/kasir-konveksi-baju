@@ -117,7 +117,8 @@ $total_categories = count($all_categories);
                                     Edit
                                 </button>
                                 <button onclick="confirmDelete(<?= $row['id_ukcelana'] ?>)" 
-                                        style="background-color:#f44336; color:white; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;">
+                                        style="background-color:#f44336; color:white; padding:5px 10px; border:none; border-radius:3px; cursor:pointer;"
+                                        <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin yang bisa menghapus ini"'; ?>>
                                     Hapus
                                 </button>
                             </td>

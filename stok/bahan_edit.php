@@ -55,8 +55,9 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
         </div>
 
         <div class="button-group">
-                <button type="submit" class="btn btn-simpan">
-                    <i class="fas fa-save"></i> Simpan Kategori
+                <button type="submit" class="btn btn-simpan"
+                <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin yang bisa mengubah ini"'; ?>>
+                    <i class="fas fa-save"></i> Update bahan
                 </button>
                 <a href="index.php?page=bahan" class="btn btn-batal">
                     <i class="fas fa-times"></i> Batalkan

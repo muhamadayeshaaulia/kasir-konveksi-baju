@@ -34,6 +34,7 @@ if ($user && password_verify($password, $user['password'])) {
         case 'Owner':
         case 'Admin':
         case 'Kasir':
+        case 'Demo';
             header("Location: ../index.php?login=success");
             break;
         default:

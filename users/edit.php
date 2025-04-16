@@ -74,7 +74,8 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
         </div>
         
         <div class="button-group">
-            <button type="submit" class="btn btn-simpan">
+            <button type="submit" class="btn btn-simpan"
+            <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin dan owner yang bisa mengubah ini"'; ?>>
                 <i class="fas fa-save"></i> Simpan Perubahan
             </button>
             <button type="button" onclick="window.location.href='index.php?page=users'" 

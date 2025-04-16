@@ -18,7 +18,7 @@
             <h3>Dashboard</h3>
         </a>
 
-        <?php if ($level == 'Admin' || $level == 'Owner'): ?>
+        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo'): ?>
             <?php
             require_once 'app/koneksi.php';
             
@@ -38,7 +38,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin' || $level == 'Owner'): ?>
+        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo'): ?>
             <a href="index.php?page=pendapatan" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'pendapatan') ? 'active' : '';
@@ -48,7 +48,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir'): ?>
+        <?php if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir' || $level == 'Demo'): ?>
             <a href="index.php?page=chat" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'analytics') ? 'active' : '';
@@ -58,7 +58,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin'): ?>
+        <?php if ($level == 'Admin' || $level == 'Demo'): ?>
             <?php
             require_once 'app/koneksi.php';
             $tabel_kategori = ['uk_baju', 'uk_celana', 'kategori'];
@@ -81,7 +81,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin'): ?>
+        <?php if ($level == 'Admin' || $level == 'Demo'): ?>
         <?php
         require_once 'app/koneksi.php';
         $tabel_bahan = ['produk', 'bahan','cstm_pbahn'];
@@ -104,7 +104,7 @@
         </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin' || $level == 'Kasir'): ?>
+        <?php if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo'): ?>
             <a href="index.php?page=transaksi" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'transaksi') ? 'active' : '';
@@ -114,7 +114,7 @@
             </a>
         <?php endif; ?>
 
-        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Kasir'): ?>
+        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Kasir' || $level == 'Demo'): ?>
             <a href="index.php?page=laporan" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'laporan') ? 'active' : '';

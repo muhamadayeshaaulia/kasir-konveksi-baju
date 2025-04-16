@@ -64,8 +64,9 @@ $errors = $_GET['errors'] ?? [];
         </div>
         
         <div class="button-group">
-            <button type="submit" class="btn btn-simpan">
-                <i class="fas fa-save"></i> Simpan Custom Baru
+            <button type="submit" class="btn btn-simpan"
+            <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin yang bisa menyimpan"'; ?>>
+                <i class="fas fa-save"></i> Simpan Custom
             </button>
             <button type="button" onclick="window.location.href='index.php?page=custom'" 
                     class="btn btn-batal">

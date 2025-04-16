@@ -10,7 +10,9 @@
     <form id="chat-form">
       <input type="hidden" name="sender_id" value="<?= $_SESSION['user_id'] ?>">
       <textarea name="message" placeholder="Ketik pesan..." required></textarea>
-      <button type="submit">Kirim</button>
+      <button type="submit"
+      <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner' && $_SESSION['level'] !== 'Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin, owner dan kasir yang bisa menyimpan"'; ?>>
+      Kirim</button>
     </form>
   </div>
 

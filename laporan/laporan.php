@@ -57,7 +57,9 @@ foreach ($metode_pembayaran as $metode) {
         <input type="date" name="tanggal" value="<?= $tanggal_filter ?>" onchange="this.form.submit()">
     </form>
 
-    <button class="print-btn" onclick="window.print()">🖨 Print</button>
+    <button class="print-btn" onclick="window.print()"
+    <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner' && $_SESSION['level'] !=='Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin, owner dan kasir yang bisa melakukan print laporan"'; ?>>
+    🖨 Print</button>
 
     <div class="table-container">
         <table>

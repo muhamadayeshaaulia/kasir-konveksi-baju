@@ -91,9 +91,11 @@ $koneksi->close();
         </div>
         
         <div class="button-group">
-            <button type="submit" class="btn btn-simpan">
-                <i class="fas fa-save"></i> Simpan Pengguna
-            </button>
+        <button type="submit" class="btn btn-simpan"
+        <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin dan owner yang bisa menyimpan"'; ?>>
+            <i class="fas fa-save"></i> Simpan Pengguna
+        </button>
+
             <button type="button" onclick="window.location.href='index.php?page=users'" 
                     class="btn btn-batal">
                 <i class="fas fa-times"></i> Batalkan

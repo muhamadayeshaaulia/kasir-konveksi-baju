@@ -69,7 +69,9 @@ if (isset($_GET['kode'])) {
             <label for="bukti_lunas">Bukti Pelunasan:</label>
             <input type="file" id="bukti_lunas" name="bukti_lunas" required>
         </div>
-        <button type="submit" class="btn">Proses Pelunasan</button>
+        <button type="submit" class="btn"
+        <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin dan kasir yang bisa melakukan pelunasan"'; ?>>
+        Proses Pelunasan</button>
     </form>
     <?php elseif (isset($_GET['kode'])): ?>
         <div class="alert alert-danger">Transaksi tidak ditemukan atau sudah lunas</div>

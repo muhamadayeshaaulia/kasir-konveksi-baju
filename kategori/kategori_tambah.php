@@ -50,7 +50,8 @@ $old_input = isset($_GET['old']) ? json_decode(urldecode($_GET['old']), true) : 
             </div>
                     
             <div class="button-group">
-                <button type="submit" class="btn btn-simpan">
+                <button type="submit" class="btn btn-simpan"
+                <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin yang bisa menyimpan"'; ?>>
                     <i class="fas fa-save"></i> Simpan Kategori
                 </button>
                 <a href="index.php?page=kategori" class="btn btn-batal">

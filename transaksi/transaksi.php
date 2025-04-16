@@ -247,7 +247,8 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
                 </div>
             
             <div class="form-group">
-                <button type="submit" class="btn-submit">Simpan Transaksi</button>
+                <button type="submit" class="btn-submit"
+                <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin dan kasir yang bisa melakukan transaksi"'; ?>>Simpan Transaksi</button>
                 <a href="./index.php?page=pelunasan" class="btn-submit" style="text-decoration: none; display: inline-block;">
                     Pelunasan Dp
                 </a>
