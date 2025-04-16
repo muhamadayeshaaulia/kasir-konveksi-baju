@@ -68,32 +68,40 @@ if ($result->num_rows > 0) {
                     </div>
                 </div>
             </div>
-            <!-- End of Analyses -->
 
-            <!-- New Users Section -->
 <div class="new-users">
     <h2>New Users</h2>
     <div class="user-list">
         <?php
-        $stmt_new_users = $pdo->query('SELECT user_id, username, level FROM user ORDER BY user_id DESC LIMIT 3');
+        $stmt_new_users = $pdo->query('SELECT user_id, username, level, image FROM user ORDER BY user_id DESC LIMIT 3');
         $new_users = $stmt_new_users->fetchAll(PDO::FETCH_ASSOC);
-        
+
         foreach ($new_users as $user): 
+            $upload_path = './uploads/user/';
+            $default_img = './img/profile-' . rand(2,4) . '.jpg';
+
+            $user_img = $upload_path . $user['image'];
+            if (!empty($user['image']) && file_exists($user_img)) {
+                $img_src = $user_img;
+            } else {
+                $img_src = $default_img;
+            }
         ?>
         <div class="user">
-            <img src="./img/profile-<?= rand(2,4) ?>.jpg">
+            <img src="<?= $img_src ?>" alt="User Image">
             <h2><?= htmlspecialchars($user['username']) ?></h2>
-            <p>Roll: <?= htmlspecialchars($user['level'])?></p>
+            <p>Roll: <?= htmlspecialchars($user['level']) ?></p>
         </div>
         <?php endforeach; ?>
-        
+
         <div class="user" onclick="window.location.href='index.php?page=tusers'" style="cursor:pointer;">
-            <img src="./img/plus.png">
+            <img src="./img/plus.png" alt="More Users">
             <h2>More</h2>
             <p>New User</p>
         </div>
     </div>
 </div>
+
 <?php
 require './app/koneksi.php';
 
