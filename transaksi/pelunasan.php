@@ -96,7 +96,7 @@ if (isset($_GET['kode'])) {
 <script>
     Swal.fire({
         title: 'Berhasil!',
-        text: 'Pelunasan berhasil untuk transaksi <?= htmlspecialchars($_GET['kode']) ?>',
+        text: 'Pelunasan berhasil untuk transaksi.\nKode: <?= htmlspecialchars($_GET['kode']) ?>',
         icon: 'success',
         confirmButtonText: 'Oke'
     });

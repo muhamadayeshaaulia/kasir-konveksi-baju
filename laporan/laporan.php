@@ -5,9 +5,13 @@ $tanggal_filter = $_GET['tanggal'] ?? date('Y-m-d');
 
 $sql = "SELECT 
             t.kode_transaksi,
+            t.pembelian,
             t.kategori,
+            t.cstm_produk,
             p.nama_produk,
+            s.cstm_bahan,
             b.bahan_kain,
+            t.cstm_ukuran,
             u.ukuran_bj,
             c.ukuran_cln,
             t.jumlah,
@@ -21,6 +25,7 @@ $sql = "SELECT
             t.pembayaran
         FROM transaksi t
         LEFT JOIN produk p ON t.produk = p.id_produk
+        LEFT JOIN cstm_pbahn s ON t.cstm_bahan = s.id_cstm
         LEFT JOIN bahan b ON t.bahan = b.id_bahan
         LEFT JOIN uk_baju u ON t.uk_baju = u.id_ukbaju
         LEFT JOIN uk_celana c ON t.uk_celana = c.id_ukcelana
@@ -59,17 +64,21 @@ foreach ($metode_pembayaran as $metode) {
             <thead>
                 <tr>
                     <th>Kode</th>
+                    <th>Pembelian</th>
                     <th>Kategori</th>
+                    <th>Custom Produk</th>
                     <th>Produk</th>
+                    <th>Custom Bahan</th>
                     <th>Bahan</th>
+                    <th>Custom Ukuran</th>
                     <th>Uk. Baju</th>
                     <th>Uk. Celana</th>
                     <th>Jumlah</th>
                     <th>Diskon</th>
                     <th>Harga</th>
                     <th>Tax</th>
-                    <th>Subtotal</th>
                     <th>Total</th>
+                    <th>Subtotal</th>
                     <th>Tanggal</th>
                     <th>Status</th>
                     <th>Pembayaran</th>
@@ -79,9 +88,13 @@ foreach ($metode_pembayaran as $metode) {
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                     <tr>
                         <td><?= $row['kode_transaksi'] ?></td>
+                        <td><?= $row['pembelian'] ?></td>
                         <td><?= $row['kategori'] ?></td>
+                        <td><?= $row['cstm_produk'] ?></td>
                         <td><?= $row['nama_produk'] ?></td>
+                        <td><?= $row['cstm_bahan'] ?></td>
                         <td><?= $row['bahan_kain'] ?></td>
+                        <td><?= $row['cstm_ukuran'] ?></td>
                         <td><?= $row['ukuran_bj'] ?></td>
                         <td><?= $row['ukuran_cln'] ?></td>
                         <td><?= $row['jumlah'] ?></td>

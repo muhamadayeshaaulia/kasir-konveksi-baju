@@ -140,6 +140,10 @@ tbody tr:hover {
 }
 
 @media print {
+    @page {
+        size: landscape;
+        margin: 1cm;
+    }
     body * {
         visibility: hidden;
     }
@@ -160,6 +164,11 @@ tbody tr:hover {
     form, .print-btn, .total-summary {
         display: none !important;
     }
+    table {
+        font-size: 10px;
+        width: 100%;
+        border-collapse: collapse;
+    }
 
     .table-container {
         box-shadow: none !important;
@@ -168,5 +177,7 @@ tbody tr:hover {
 
     th, td {
         color: black !important;
+        padding: 4px;
+        word-break: break-word;
     }
 }
