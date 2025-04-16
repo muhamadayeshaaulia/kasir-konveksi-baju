@@ -31,11 +31,13 @@ if ($last_resi && preg_match('/^SXY-JNE-(\d{4})$/', $last_resi, $matches)) {
 }
 
 $kategori = mysqli_query($koneksi, "SELECT * FROM kategori");
+$cstm_bahan = mysqli_query($koneksi, "SELECT * FROM cstm_pbahn");
 $produk = mysqli_query($koneksi, "SELECT * FROM produk");
 $bahan = mysqli_query($koneksi, "SELECT * FROM bahan");
 $uk_baju = mysqli_query($koneksi, "SELECT * FROM uk_baju");
 $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
 ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="./style/transaksi.css">
     <div class="form-container">
         <h1>Kasir | Konveksi</h1>
@@ -49,10 +51,43 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
                 <label for="nama_customer">Nama Customer:</label>
                 <input type="text" id="nama_customer" name="nama_customer" required onblur="calculateTotal()">
             </div>
-            
+
             <div class="form-group">
-                <label for="kategori">Kategori:</label>
-                <select id="kategori" name="kategori" required onchange="getProduk()">
+                <label for="pembelian">pembelian:</label>
+                <select id="pembelian" name="pembelian" required onchange="togglePembelianFields()">
+                    <option value="">-- Pilih Jenis Pembelian --</option>
+                    <option value="siap pakai">Siap pakai</option>
+                    <option value="jahit">Jahit</option>
+                </select>
+            </div>
+            <div id="custom_fields" style="display:none;">
+                <div class="form-group">
+                    <label for="cstm_produk">Custom Produk:</label>
+                    <input type="text" id="cstm_produk" name="cstm_produk">
+                </div>
+                
+                <div class="form-group">
+                <label for="cstm_bahan">Custom Bahan:</label>
+                <select id="cstm_bahan" name="cstm_bahan" onchange="getHargaCustom()">
+                    <option value="">-- Pilih Custom bahan--</option>
+                    <?php 
+                    mysqli_data_seek($cstm_bahan, 0);
+                    while($row = mysqli_fetch_assoc($cstm_bahan)): ?>
+                        <option value="<?php echo $row['id_cstm']; ?>"><?php echo $row['cstm_bahan']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                <span id="stokcstm" class="info-text"></span>
+            </div>
+                <div class="form-group">
+                    <label for="cstm_ukuran">Custom Ukuran:</label>
+                    <input type="text" id="cstm_ukuran" name="cstm_ukuran">
+                </div>
+            </div>
+
+            
+            <div class="form-group" id="kategori_group"><br>
+                <label for="kategori">Kategori:</label><br>
+                <select id="kategori" name="kategori" onchange="getProduk()">
                     <option value="">-- Pilih Kategori --</option>
                     <?php while($row = mysqli_fetch_assoc($kategori)): ?>
                         <option value="<?php echo $row['id_kategori']; ?>"><?php echo $row['nama_kategori']; ?></option>
@@ -60,9 +95,9 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
                 </select>
             </div>
             
-            <div class="form-group">
-                <label for="produk">Produk:</label>
-                <select id="produk" name="produk" required onchange="getHarga()">
+            <div class="form-group" id="produk_group">
+                <label for="produk">Produk:</label><br>
+                <select id="produk" name="produk" onchange="getHarga()">
                     <option value="">-- Pilih Produk --</option>
                     <?php 
                     mysqli_data_seek($produk, 0);
@@ -83,9 +118,9 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
                 <input type="number" id="jumlah" name="jumlah" min="1" value="1" onchange="calculateTotal()">
             </div>
             
-            <div class="form-group">
-                <label for="bahan">Bahan Kain:</label>
-                <select id="bahan" name="bahan" required>
+            <div class="form-group" id="bahan_group">
+                <label for="bahan">Bahan Kain:</label><br>
+                <select id="bahan" name="bahan">
                     <option value="">-- Pilih Bahan --</option>
                     <?php 
                     mysqli_data_seek($bahan, 0);
@@ -220,4 +255,15 @@ $uk_celana = mysqli_query($koneksi, "SELECT * FROM uk_celana");
         </form>
         
     </div>
-    <script src="./js/transaksi.js"></script>
+    <script src="./js/transaksi.js?v=<?php echo time(); ?>"></script>
+    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+    Swal.fire({
+        title: 'Berhasil!',
+        text: 'Transaksi berhasil disimpan.\nKode: <?= htmlspecialchars($_GET['kode']) ?>',
+        icon: 'success',
+        confirmButtonText: 'Oke'
+    });
+</script>
+<?php endif; ?>
+

@@ -84,7 +84,7 @@
         <?php if ($level == 'Admin'): ?>
         <?php
         require_once 'app/koneksi.php';
-        $tabel_bahan = ['produk', 'bahan'];
+        $tabel_bahan = ['produk', 'bahan','cstm_pbahn'];
         $total_bahan = 0;
         foreach ($tabel_bahan as $tabel) {
             $query = "SHOW TABLES LIKE '$tabel'";
@@ -99,7 +99,7 @@
             echo ($currentPage == 'stok') ? 'active' : '';
         ?>">
             <span class="material-icons-sharp">edit</span>
-            <h3>Produk bahan</h3>
+            <h3>Produk bahan custom</h3>
             <span class="message-count"><?php echo $total_bahan; ?></span>
         </a>
         <?php endif; ?>

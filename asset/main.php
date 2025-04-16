@@ -147,6 +147,27 @@
                 echo "<h1>Akses Ditolak</>";
             }
         break;
+        case 'custom';
+            if ($level == 'Admin') {
+                include('./stok/custom.php');
+            } else {
+                echo "<h1>Akses Ditolak</>";
+            }
+        break;
+        case 'tcustom';
+            if ($level == 'Admin') {
+                include('./stok/custom_tambah.php');
+            } else{
+                echo '<h1>Akses Ditolak</>';
+            }
+        break;
+        case 'ecustom';
+            if ($level == 'Admin') {
+                include('./stok/custom_edit.php');
+            }else{
+                echo '<h1>Akses Ditotal</>';
+            }
+        break;
         case 'transaksi':
             if ($level == 'Admin' || $level == 'Kasir') {
                 include('./transaksi/transaksi.php');
@@ -168,6 +189,20 @@
                     echo "<h1>Akses Ditolak</h1>";
                 }
                 break;
+            case 'lcustom':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/lunas_cstm.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
+            case 'dcustom':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/dp_cstm.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
             case 'dp':
                 if ($level == 'Admin' || $level == 'Kasir') {
                     include('./kuitansi/dp.php');
@@ -178,6 +213,13 @@
             case 'print':
                 if ($level == 'Admin' || $level == 'Kasir') {
                     include('./kuitansi/print_lunas.php');
+                } else {
+                    echo "<h1>Akses Ditolak</h1>";
+                }
+                break;
+            case 'pcustom':
+                if ($level == 'Admin' || $level == 'Kasir') {
+                    include('./kuitansi/print_lunas_cstm.php');
                 } else {
                     echo "<h1>Akses Ditolak</h1>";
                 }

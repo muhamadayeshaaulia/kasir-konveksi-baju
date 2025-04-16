@@ -1,19 +1,29 @@
 <?php
 require './app/koneksi.php';
+
+// Filter tanggal
 $tanggal_filter = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
-$sql = "SELECT t.id_trx, t.kode_transaksi, t.nama_customer, t.kategori, p.nama_produk, b.bahan_kain, u.ukuran_bj, c.ukuran_cln, t.jumlah,
-        t.diskon, t.harga, t.tax, t.total, t.subtotal, t.tanggal_transaksi, t.status_pembayaran, t.dp_amount,
-        t.remaining_amount, t.bukti_dp, t.bukti_lunas, t.tanggal_pelunasan, t.status_pengiriman, t.alamat,
-        t.email, t.nohp, t.resi, t.pembayaran
+
+// Menyusun query SQL dengan prepared statement
+$sql = "SELECT t.id_trx, t.kode_transaksi, t.nama_customer, t.pembelian, t.kategori, p.nama_produk, 
+               b.bahan_kain, u.ukuran_bj, c.ukuran_cln, t.jumlah, t.diskon, t.harga, t.tax, t.total, 
+               t.subtotal, t.tanggal_transaksi, t.status_pembayaran, t.dp_amount, t.remaining_amount, 
+               t.bukti_dp, t.bukti_lunas, t.tanggal_pelunasan, t.status_pengiriman, t.alamat, t.email, 
+               t.nohp, t.resi, t.pembayaran
         FROM transaksi t
         LEFT JOIN produk p ON t.produk = p.id_produk
         LEFT JOIN bahan b ON t.bahan = b.id_bahan
         LEFT JOIN uk_baju u ON t.uk_baju = u.id_ukbaju
         LEFT JOIN uk_celana c ON t.uk_celana = c.id_ukcelana
-        WHERE t.status_pembayaran = 'dp'AND DATE(t.tanggal_transaksi) = '$tanggal_filter'
-        ORDER BY t.tanggal_transaksi DESC";
+        WHERE t.status_pembayaran = 'dp' AND t.pembelian = 'siap pakai' 
+        AND DATE(t.tanggal_transaksi) = ?
+        ORDER BY CAST(SUBSTRING(t.kode_transaksi, 4) AS UNSIGNED) ASC";
 
-$result = $koneksi->query($sql);
+$stmt = $koneksi->prepare($sql);
+$stmt->bind_param("s", $tanggal_filter);
+$stmt->execute();
+$result = $stmt->get_result();
+
 $all_users = [];
 if ($result->num_rows > 0) {
     $all_users = $result->fetch_all(MYSQLI_ASSOC);
@@ -26,7 +36,7 @@ $total_users = count($all_users);
 <link rel="stylesheet" href="./style/dp.css">
 <div class="recent-orders">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1>Transaksi Deposit</h1>
+        <h1>Deposit siap pakai </h1>
         
         <div style="display: flex; align-items: center; flex-wrap: wrap;">
             <div style="width: 100%; margin-bottom: 10px; order: 1;">
@@ -34,18 +44,38 @@ $total_users = count($all_users);
                        style="padding: 8px 12px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
             </div>
             <div class="desktop-view" style="display: flex; align-items: center; order: 2;">
-                <?php
+            <?php
                     require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi WHERE status_pembayaran='lunas'";
+                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'siap pakai'";
                     $result_user = mysqli_query($koneksi, $query_user);
                     $data_trx = mysqli_fetch_assoc($result_user);
                     $total_trx = $data_trx['total_trx'];
                     ?>
                 <a href="index.php?page=lunas" class="<?php 
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-                        echo ($currentPage == 'bahan') ? 'active' : '';
+                        echo ($currentPage == 'lunas') ? 'active' : '';
                         ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
-                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Kuitansi Lunas (<?php echo $total_trx; ?>)
+                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Siap Pakai (<?php echo $total_trx; ?>)
+                </a>
+                <?php
+                    require_once './app/koneksi.php';
+                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='dp' AND pembelian = 'jahit'";
+                    $result_user = mysqli_query($koneksi, $query_user);
+                    $data_trx = mysqli_fetch_assoc($result_user);
+                    $total_trx = $data_trx['total_trx'];
+                    ?>
+                <a href="index.php?page=dcustom" style="background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Deposit Jahit (<?php echo $total_trx; ?>)
+                </a>
+                <?php
+                    require_once './app/koneksi.php';
+                    $query_user = "SELECT COUNT(id_trx) as total_trx FROM transaksi Where status_pembayaran='lunas' AND pembelian = 'jahit'";
+                    $result_user = mysqli_query($koneksi, $query_user);
+                    $data_trx = mysqli_fetch_assoc($result_user);
+                    $total_trx = $data_trx['total_trx'];
+                    ?>
+                <a href="index.php?page=lcustom" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Lunas Jahit (<?php echo $total_trx; ?>)
                 </a>
             </div>
             
@@ -58,7 +88,19 @@ $total_users = count($all_users);
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                             echo ($currentPage == 'lunas') ? 'active' : '';
                             ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
-                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Kuitansi Lunas (<?php echo $total_trx; ?>)
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i>Lunas Siap Pakai (<?php echo $total_trx; ?>)
+                    </a>
+                    <a href="index.php?page=dcustom" class="<?php 
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                            echo ($currentPage == 'dcustom') ? 'active' : '';
+                            ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Deposit Jahit (<?php echo $total_trx; ?>)
+                    </a>
+                    <a href="index.php?page=lcustom" class="<?php 
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                            echo ($currentPage == 'lcustom') ? 'active' : '';
+                            ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Lunas Jahit (<?php echo $total_trx; ?>)
                     </a>
                 </div>
             </div>
@@ -79,6 +121,7 @@ $total_users = count($all_users);
                 <tr style="background-color:var(--color-background);">
                     <th style="padding:12px; border:1px solid #ddd;">KODE TRANSAKSI</th>
                     <th style="padding:12px; border:1px solid #ddd;">NAMA CUSTOMER</th>
+                    <th style="padding:12px; border:1px solid #ddd;">JENIS PEMBELIAN</th>
                     <th style="padding:12px; border:1px solid #ddd;">KATEGORI</th>
                     <th style="padding:12px; border:1px solid #ddd;">PRODUK</th>
                     <th style="padding:12px; border:1px solid #ddd;">BAHAN</th>
@@ -112,6 +155,7 @@ $total_users = count($all_users);
                         <tr>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["kode_transaksi"]) ?></td>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["nama_customer"]) ?></td>
+                            <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["pembelian"]) ?></td>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["kategori"]) ?></td>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["nama_produk"]) ?></td>
                             <td style="padding:12px; border:1px solid #ddd;"><?= htmlspecialchars($row["bahan_kain"]) ?></td>
@@ -143,7 +187,7 @@ $total_users = count($all_users);
                                 <?= htmlspecialchars($row["bukti_lunas"]) ?: '-' ?>
                             <?php elseif (!empty($row["bukti_lunas"])): ?>
                                 <?php
-                                    $folder = (!empty($row["dp_amount"]) && $row["dp_amount"] > 0) ? './uploads/bukti_lunas/' : './transaksi/uploads/bukti/';
+                                    $folder = (!empty($row["dp_amount"]) && $row["dp_amount"] > 0) ? './transaksi/uploads/bukti_lunas/' : './transaksi/uploads/bukti/';
                                 ?>
                                 <img src="<?= $folder . htmlspecialchars($row["bukti_lunas"]) ?>" 
                                     alt="Bukti Lunas" width="100" style="cursor:pointer;" 
@@ -178,12 +222,12 @@ $total_users = count($all_users);
         <?php if ($total_users > 3): ?>
         <div style="text-align: center; margin-top: 20px;">
             <?php if (!$show_all): ?>
-                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=1'"
+                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&tanggal=<?= $tanggal_filter ?>&show_all=1'"
                         style="background-color: #6C9BCF; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
                     Tampilkan Semua (<?= $total_users ?>)
                 </button>
             <?php else: ?>
-                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&show_all=0'"
+                <button onclick="window.location.href='?page=<?= $_GET['page'] ?? '' ?>&tanggal=<?= $tanggal_filter ?>&show_all=0'"
                         style="background-color: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
                     Tampilkan Sedikit
                 </button>

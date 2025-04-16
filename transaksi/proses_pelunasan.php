@@ -1,49 +1,67 @@
 <?php
-require './app/koneksi.php';
+require '../app/koneksi.php';
 
-$kode_transaksi = $_POST['kode_transaksi'];
-$tanggal_pelunasan = date('Y-m-d H:i:s');
-$bukti_lunas = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kode_transaksi'])) {
+    $kode_transaksi = $_POST['kode_transaksi'];
+    $error = '';
+    $bukti_lunas = '';
+    $target_file = '';
 
-$query_pembayaran = "SELECT pembayaran FROM transaksi WHERE kode_transaksi = ?";
-$stmt_pembayaran = mysqli_prepare($koneksi, $query_pembayaran);
-mysqli_stmt_bind_param($stmt_pembayaran, "s", $kode_transaksi);
-mysqli_stmt_execute($stmt_pembayaran);
-$result = mysqli_stmt_get_result($stmt_pembayaran);
-$row = mysqli_fetch_assoc($result);
-$pembayaran = strtolower($row['pembayaran']);
+    $stmt = mysqli_prepare($koneksi, "SELECT pembayaran FROM transaksi WHERE kode_transaksi = ?");
+    mysqli_stmt_bind_param($stmt, "s", $kode_transaksi);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    $metode_pembayaran = strtolower($row['pembayaran']);
 
-if ($pembayaran === 'cash') {
-    $bukti_lunas = 'CASH-' . date('YmdHis');
-} else {
-    if ($_FILES['bukti_lunas']['error'] === UPLOAD_ERR_OK) {
-        $target_dir = "uploads/bukti_lunas/";
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir, 0777, true);
-        }
-        $file_ext = pathinfo($_FILES['bukti_lunas']['name'], PATHINFO_EXTENSION);
-        $bukti_lunas = $kode_transaksi . '_lunas.' . $file_ext;
-        move_uploaded_file($_FILES['bukti_lunas']['tmp_name'], $target_dir . $bukti_lunas);
+    if ($metode_pembayaran === 'cash') {
+        $bukti_lunas = 'CASH-' . date('YmdHis');
     } else {
-        die("Error: Bukti pelunasan wajib diunggah untuk metode pembayaran non-cash.");
+        if ($_FILES['bukti_lunas']['error'] === UPLOAD_ERR_OK) {
+            $target_dir = "uploads/bukti_lunas/";
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
+
+            $file_ext = strtolower(pathinfo($_FILES['bukti_lunas']['name'], PATHINFO_EXTENSION));
+            $bukti_lunas = $kode_transaksi . '_lunas.' . $file_ext;
+            $target_file = $target_dir . $bukti_lunas;
+
+            if (!in_array($file_ext, ['jpg', 'jpeg', 'png', 'pdf'])) {
+                $error = "Format tidak didukung.";
+            } elseif ($_FILES['bukti_lunas']['size'] > 2000000) {
+                $error = "Ukuran file maksimal 2MB.";
+            } elseif (!move_uploaded_file($_FILES['bukti_lunas']['tmp_name'], $target_file)) {
+                $error = "Gagal upload file.";
+            }
+        } else {
+            $error = "Bukti pelunasan wajib diunggah.";
+        }
     }
-}
 
-$query = "UPDATE transaksi SET 
-    status_pembayaran = 'lunas',
-    remaining_amount = 0,
-    bukti_lunas = ?,
-    tanggal_pelunasan = ?
-    WHERE kode_transaksi = ?";
+    if ($error) {
+        header("Location: ../index.php?page=pelunasan&error=" . urlencode($error) . "&kode=" . urlencode($kode_transaksi));
+        exit();
+    }
 
-$stmt = mysqli_prepare($koneksi, $query);
-mysqli_stmt_bind_param($stmt, "sss", $bukti_lunas, $tanggal_pelunasan, $kode_transaksi);
+    $query = "UPDATE transaksi SET 
+        status_pembayaran = 'lunas',
+        remaining_amount = 0,
+        bukti_lunas = ?,
+        tanggal_pelunasan = NOW()
+        WHERE kode_transaksi = ?";
+    $stmt = mysqli_prepare($koneksi, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $bukti_lunas, $kode_transaksi);
 
-if (mysqli_stmt_execute($stmt)) {
-    echo "Pelunasan berhasil diproses untuk transaksi: " . $kode_transaksi;
+    if (mysqli_stmt_execute($stmt)) {
+        header("Location: ../index.php?page=pelunasan&success=1&kode=" . urlencode($kode_transaksi));
+    } else {
+        if (!empty($target_file) && file_exists($target_file)) {
+            unlink($target_file);
+        }
+        $error = "Gagal menyimpan ke database.";
+        header("Location: ../index.php?page=pelunasan&error=" . urlencode($error) . "&kode=" . urlencode($kode_transaksi));
+    }
 } else {
-    echo "Error: " . mysqli_stmt_error($stmt);
+    header("Location: ../index.php?page=pelunasan");
 }
-
-mysqli_close($koneksi);
-?>

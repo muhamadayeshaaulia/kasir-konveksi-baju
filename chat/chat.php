@@ -15,7 +15,6 @@
   </div>
 
   <script>
-    let lastChat="";
   function loadChat() {
     fetch("./chat/get_forum_chat.php")
       .then(res => res.text())

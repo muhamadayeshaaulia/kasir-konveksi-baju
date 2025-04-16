@@ -15,6 +15,116 @@ function togglePengirimanFields() {
         noHpField.required = false;
     }
 }
+function togglePembelianFields() {
+    var pembelian = document.getElementById('pembelian').value;
+    var customFields = document.getElementById('custom_fields');
+    if (pembelian == 'jahit') {
+        document.getElementById('kategori_group').style.display = 'none';
+        document.getElementById('produk_group').style.display = 'none';
+        document.getElementById('bahan_group').style.display = 'none';
+        document.getElementById('cstm_bahan').selectedIndex = 0;
+        document.getElementById('kategori').selectedIndex = 0;
+        document.getElementById('produk').selectedIndex = 0;
+        document.getElementById('harga').value = '';
+        document.getElementById('jumlah').value = 1;
+        document.getElementById('stok').innerHTML = '';
+        document.getElementById('bahan').selectedIndex = 0;
+        document.getElementById('uk_baju').selectedIndex = 0;
+        document.getElementById('uk_celana').selectedIndex = 0;
+        document.getElementById('subtotal').value = '';
+        document.getElementById('tax').value = '';
+        document.getElementById('diskon').value = '';
+        document.getElementById('diskon_info').innerHTML = '';
+        document.getElementById('total').value = '';
+        document.getElementById('metode_pembayaran').selectedIndex = 0;
+        document.getElementById('dp_fields').style.display = 'none';
+        document.getElementById('dp_amount').value = '';
+        document.getElementById('remaining_amount').value = '';
+        document.getElementById('status_pengiriman').selectedIndex = 0;
+        document.getElementById('pengiriman_fields').style.display = 'none';
+        document.getElementById('email').value = '';
+        document.getElementById('email').required = false;
+        document.getElementById('alamat').value = '';
+        document.getElementById('nohp').value = '';
+        document.getElementById('pembayaran').selectedIndex = 0;
+        document.getElementById('bukti_transaksi').value = '';
+        document.getElementById('bukti_transaksi').style.display = 'none';
+        document.querySelector('label[for="bukti_transaksi"]').style.display = 'none';
+        document.getElementById('custom_fields').style.display = 'block';
+        document.getElementById('uk_baju_group').style.display = 'none';
+        document.getElementById('uk_celana_group').style.display = 'none';
+    } else if (pembelian == 'siap pakai') {
+        document.getElementById('kategori_group').style.display = 'block';
+        document.getElementById('produk_group').style.display = 'block';
+        document.getElementById('bahan_group').style.display = 'block';
+        document.getElementById('custom_fields').style.display = 'none';
+        document.getElementById('kategori').selectedIndex = 0;
+        document.getElementById('produk').selectedIndex = 0;
+        document.getElementById('harga').value = '';
+        document.getElementById('jumlah').value = 1;
+        document.getElementById('stok').innerHTML = '';
+        document.getElementById('bahan').selectedIndex = 0;
+        document.getElementById('uk_baju').selectedIndex = 0;
+        document.getElementById('uk_celana').selectedIndex = 0;
+        document.getElementById('subtotal').value = '';
+        document.getElementById('tax').value = '';
+        document.getElementById('diskon').value = '';
+        document.getElementById('diskon_info').innerHTML = '';
+        document.getElementById('total').value = '';
+        document.getElementById('metode_pembayaran').selectedIndex = 0;
+        document.getElementById('dp_fields').style.display = 'none';
+        document.getElementById('dp_amount').value = '';
+        document.getElementById('remaining_amount').value = '';
+        document.getElementById('status_pengiriman').selectedIndex = 0;
+        document.getElementById('pengiriman_fields').style.display = 'none';
+        document.getElementById('email').value = '';
+        document.getElementById('email').required = false;
+        document.getElementById('alamat').value = '';
+        document.getElementById('nohp').value = '';
+        document.getElementById('pembayaran').selectedIndex = 0;
+        document.getElementById('bukti_transaksi').value = '';
+        document.getElementById('bukti_transaksi').style.display = 'none';
+        document.querySelector('label[for="bukti_transaksi"]').style.display = 'none';
+        document.getElementById('uk_baju_group').style.display = 'none';
+        document.getElementById('uk_celana_group').style.display = 'none';
+
+    } else {
+        document.getElementById('kategori_group').style.display = 'none';
+        document.getElementById('produk_group').style.display = 'none';
+        document.getElementById('bahan_group').style.display = 'none';
+        document.getElementById('custom_fields').style.display = 'none';
+        document.getElementById('kategori').selectedIndex = 0;
+        document.getElementById('produk').selectedIndex=0;
+        document.getElementById('harga').value = '';
+        document.getElementById('jumlah').value = 1;
+        document.getElementById('stok').innerHTML = '';
+        document.getElementById('bahan').selectedIndex = 0;
+        document.getElementById('uk_baju').selectedIndex = 0;
+        document.getElementById('uk_celana').selectedIndex = 0;
+        document.getElementById('subtotal').value = '';
+        document.getElementById('tax').value = '';
+        document.getElementById('diskon').value = '';
+        document.getElementById('diskon_info').innerHTML = '';
+        document.getElementById('total').value = '';
+        document.getElementById('metode_pembayaran').selectedIndex = 0;
+        document.getElementById('dp_fields').style.display = 'none';
+        document.getElementById('dp_amount').value = '';
+        document.getElementById('remaining_amount').value = '';
+        document.getElementById('status_pengiriman').selectedIndex = 0;
+        document.getElementById('pengiriman_fields').style.display = 'none';
+        document.getElementById('email').value = '';
+        document.getElementById('email').required = false;
+        document.getElementById('alamat').value = '';
+        document.getElementById('nohp').value = '';
+        document.getElementById('pembayaran').selectedIndex = 0;
+        document.getElementById('bukti_transaksi').value = '';
+        document.getElementById('bukti_transaksi').style.display = 'none';
+        document.querySelector('label[for="bukti_transaksi"]').style.display = 'none';
+        document.getElementById('uk_baju_group').style.display = 'none';
+        document.getElementById('uk_celana_group').style.display = 'none';
+    }
+}
+
 function toggleBayar() {
     var status = document.getElementById('pembayaran').value;
     var buktiInput = document.getElementById('bukti_transaksi');
@@ -61,6 +171,28 @@ function toggleBayar() {
             }
         }
         
+        function getHargaCustom() {
+            var cstmId = document.getElementById('cstm_bahan').value;
+            if (cstmId) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', './transaksi/get_cstm_bahan.php?id=' + cstmId, true);
+                xhr.onload = function() {
+                    if (this.status == 200) {
+                        var data = JSON.parse(this.responseText);
+                        document.getElementById('harga').value = data.harga;
+                        document.getElementById('stokcstm').innerHTML = 'Stok tersedia: ' + data.stok;
+                        calculateTotal();
+                    }
+                };
+                xhr.send();
+            } else {
+
+                document.getElementById('harga').value = '';
+                document.getElementById('stokcstm').innerHTML = '';
+            }
+        }
+        
+
         function getHarga() {
             var produk_id = document.getElementById('produk').value;
             if (produk_id) {
@@ -136,4 +268,9 @@ function toggleBayar() {
             document.getElementById('dp_amount').value = dp.toFixed(2);
             document.getElementById('remaining_amount').value = sisa.toFixed(2);
         }
-
+        window.addEventListener('DOMContentLoaded', function () {
+            togglePembelianFields();
+            togglePengirimanFields();
+            toggleBayar();
+        });
+    

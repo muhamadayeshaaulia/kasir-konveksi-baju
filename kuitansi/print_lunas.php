@@ -16,7 +16,7 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 $sql = "SELECT t.kode_transaksi, t.nama_customer,p.nama_produk, b.bahan_kain,t.jumlah, t.diskon, t.harga, t.tax, t.total, t.subtotal,
         t.tanggal_transaksi, t.status_pembayaran, t.dp_amount, t.remaining_amount,
-        t.status_pengiriman, t.pembayaran
+        t.status_pengiriman, t.pembayaran, t.pembelian
         FROM transaksi t
         LEFT JOIN produk p ON t.produk = p.id_produk
         LEFT JOIN bahan b ON t.bahan = b.id_bahan
@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div><strong>Status Pembayaran:</strong> ' . htmlspecialchars($data['status_pembayaran']) . '</div>
             <div><strong>Status Pengiriman:</strong> ' . htmlspecialchars($data['status_pengiriman']) . '</div>
             <div><strong>Metode Pembayaran:</strong> ' . htmlspecialchars($data['pembayaran']) . '</div>
+            <div><strong>Pembelian:</strong> ' . htmlspecialchars($data['pembelian']) . '</div>
             <table>
                 <tr><th>Produk</th><th>Bahan</th><th>Jumlah</th></tr>
                 <tr><td>' . htmlspecialchars($data['nama_produk']) . '</td><td>' . htmlspecialchars($data['bahan_kain']) . '</td><td>' . htmlspecialchars($data['jumlah']) . '</td></tr>
@@ -72,16 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </table>';
 
         $mail->send();
-        echo '<script type="text/javascript">
-                alert("Email telah dikirim!");
-                window.location.href = window.location.href;  // Refresh halaman atau arahkan ke halaman lain
-              </script>';
+        $kode_transaksi = $data['kode_transaksi'];
+        $id_trx = $id;
+        header("Location: ./index.php?page=print&id=$id_trx&success=1&kode=" . urlencode($kode_transaksi));
+        exit;
+
     } catch (Exception $e) {
         echo "Terjadi kesalahan: {$mail->ErrorInfo}";
     }
 }
 ?>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="./style/print.css">
 <div class="kuitansi">
     <h1>TOKO KONVEKSI-YESHA</h1>
@@ -95,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div><strong>Status Pembayaran:</strong> <?= htmlspecialchars($data['status_pembayaran']) ?></div>
         <div><strong>Status Pengiriman:</strong> <?= htmlspecialchars($data['status_pengiriman']) ?></div>
         <div><strong>Metode Pembayaran:</strong> <?= htmlspecialchars($data['pembayaran']) ?></div>
+        <div><strong>Pembelian:</strong> <?= htmlspecialchars($data['pembelian']) ?></div>
     </div>
 
     <table>
@@ -163,3 +166,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="email" name="email" id="email" required>
     <button type="submit">Kirim Kuitansi via Email</button>
 </form>
+<?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+<script>
+    Swal.fire({
+        title: 'Berhasil!',
+        text: 'Kuitansi berhasil dikirim ke email.\nKode: <?= htmlspecialchars($_GET['kode']) ?>',
+        icon: 'success',
+        confirmButtonText: 'Oke'
+    });
+</script>
+<?php endif; ?>

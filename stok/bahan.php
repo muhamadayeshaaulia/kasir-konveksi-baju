@@ -38,9 +38,9 @@ $total_users = count($all_users);
             </div>
             <?php
                     require_once './app/koneksi.php';
-                    $query_user = "SELECT COUNT(id_produk) as total_produk FROM produk";
-                    $result_user = mysqli_query($koneksi, $query_user);
-                    $data_produk = mysqli_fetch_assoc($result_user);
+                    $query_produk = "SELECT COUNT(id_produk) as total_produk FROM produk";
+                    $result_produk = mysqli_query($koneksi, $query_produk);
+                    $data_produk = mysqli_fetch_assoc($result_produk);
                     $total_produk = $data_produk['total_produk'];
                     ?>
             <div class="desktop-view" style="display: flex; align-items: center; order: 2;">
@@ -53,6 +53,19 @@ $total_users = count($all_users);
                         echo ($currentPage == 'tbahan') ? 'active' : '';
                         ?>" style="background-color: #2196F3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
                         <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Tambah Bahan
+                </a>
+
+                <?php
+                $query_custom = "SELECT COUNT(id_cstm) as total_custom FROM cstm_pbahn";
+                $result_custom = mysqli_query($koneksi, $query_custom);
+                $data_custom = mysqli_fetch_assoc($result_custom);
+                $total_custom = $data_custom['total_custom'];
+                ?>
+                <a href="index.php?page=custom" class="<?php
+                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                        echo ($currentPage == 'custom') ? 'active' : '';
+                        ?>" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none;">
+                        <i class="fas fa-pants" style="margin-right: 8px;"></i> Custom (<?php echo $total_custom; ?>)
                 </a>
             </div>
             
@@ -69,6 +82,12 @@ $total_users = count($all_users);
                             echo ($currentPage == 'tbahan') ? 'active' : '';
                             ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
                             <i class="fas fa-tshirt" style="margin-right: 8px;"></i> Tambah Bahan
+                    </a>
+                    <a href="index.php?page=custom" class="<?php 
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+                            echo ($currentPage == 'custom') ? 'active' : '';
+                            ?>" style="color: black; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #ddd;">
+                            <i class="fas fa-tshirt" style="margin-right: 8px;"></i> custom (<?php echo $total_custom?>)
                     </a>
                 </div>
             </div>

@@ -48,7 +48,7 @@ $total_categories = count($all_categories);
                     $total_kategori = $data_kategori['total_kategori'];
                     ?>
                 <a href="index.php?page=kategori" style="background-color: #9C27B0; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-right: 10px;">
-                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Kategori | (<?php echo $total_kategori; ?>)
+                    <i class="fas fa-plus" style="margin-right: 8px;"></i>Kategori (<?php echo $total_kategori; ?>)
                 </a>
 
                 <?php
