@@ -43,7 +43,7 @@ if ($user && password_verify($password, $user['password'])) {
     }
     exit();
 } else {
-    header('Location: ../login.php?error=invalid_login');
+    header('Location: ../login.php?error=Email atau Password salah!');
     exit();
 }
 ?>

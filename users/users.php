@@ -1,5 +1,6 @@
 <?php
 require './app/koneksi.php';
+
 $delete_status = isset($_SESSION['delete_status']) ? $_SESSION['delete_status'] : '';
 
 $delete_message = isset($_SESSION['delete_message']) ? $_SESSION['delete_message'] : '';

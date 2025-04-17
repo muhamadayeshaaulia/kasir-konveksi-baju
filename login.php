@@ -52,23 +52,7 @@ if (empty($_SESSION['csrf_token'])) {
             </form>
         </div>
     </div>
-    <?php
-    if (isset($_GET['error']) && $_GET['error'] == 'invalid_login') :
-    ?>
-    <div class="notification" id="notification">
-    Email atau Password salah!
-    </div>
-    <?php endif; ?>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const error = urlParams.get('error');
-
-        if (error === 'invalid_login') {
-            document.getElementById('notification').classList.add('show');
-            setTimeout(() => {
-                document.getElementById('notification').classList.remove('show');
-            }, 3000);
-        }
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if (
@@ -81,5 +65,34 @@ if (empty($_SESSION['csrf_token'])) {
             }
         };
     </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php
+if (isset($_GET['signup']) && $_GET['signup'] === 'true') {
+    echo "
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Akun berhasil dibuat!',
+            text: 'Silakan login untuk melanjutkan.',
+            confirmButtonColor: '#3085d6'
+        });
+    </script>
+    ";
+}
+
+if (isset($_GET['error'])) {
+    $errorMessage = htmlspecialchars($_GET['error']);
+    echo "
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '$errorMessage',
+            confirmButtonColor: '#d33'
+        });
+    </script>
+    ";
+}
+?>
 </body>
 </html>

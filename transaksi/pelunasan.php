@@ -1,5 +1,11 @@
 <?php
 include './app/koneksi.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../ErrorDocument/403.php");
+    exit();
+}
+
 $transaksi = null;
 if (isset($_GET['kode'])) {
     $kode = $_GET['kode'];

@@ -28,7 +28,7 @@ if (strlen($password) < 6) {
 
 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-$level = 'Kasir';
+$level = 'Demo';
 
 $stmt = $pdo->prepare("SELECT * FROM user WHERE email = ?");
 $stmt->execute([$email]);
