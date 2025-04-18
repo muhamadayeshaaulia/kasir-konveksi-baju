@@ -102,16 +102,6 @@ checkNewChatMessage();
 </script>
     <script src="./js/index.js"></script>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const loginSuccess = urlParams.get('login');
-        if (loginSuccess === 'success') {
-            const notification = document.getElementById('notification-login');
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if (
@@ -122,7 +112,6 @@ checkNewChatMessage();
                 return false;
             }
         };
-
-
+    </script>
 </body>
 </html>

@@ -79,7 +79,7 @@ if ($result->num_rows > 0) {
         foreach ($new_users as $user): 
             $upload_path = './uploads/user/';
             $default_img = './img/profile-' . rand(2,4) . '.jpg';
-
+        
             $user_img = $upload_path . $user['image'];
             if (!empty($user['image']) && file_exists($user_img)) {
                 $img_src = $user_img;
@@ -87,7 +87,7 @@ if ($result->num_rows > 0) {
                 $img_src = $default_img;
             }
         ?>
-        <div class="user">
+        <div class="user" onclick="openProfileModal('<?= $img_src ?>', '<?= htmlspecialchars($user['username']) ?>', '<?= htmlspecialchars($user['level']) ?>')">
             <img src="<?= $img_src ?>" alt="User Image">
             <h2><?= htmlspecialchars($user['username']) ?></h2>
             <p>Roll: <?= htmlspecialchars($user['level']) ?></p>
@@ -201,6 +201,15 @@ unset($_SESSION['delete_message']);
             <?php endif; ?>
         </div>
         <?php endif; ?>
+    </div>
+</div>
+
+<div id="profileModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+    <div style="position:relative; background:white; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.3); max-width:320px; text-align:center;">
+        <span id="closeBtn" onclick="closeProfileModal()" style="position:absolute; top:5px; right:10px; cursor:pointer; font-size:22px;">&times;</span>
+        <img id="modalProfileImg" src="" alt="Foto User" style="width:100%; border-radius:10px; margin-bottom:15px;">
+        <h2 id="modalUsername" style="margin: 10px 0 5px;"></h2>
+        <p id="modalLevel" style="color: #666;"></p>
     </div>
 </div>
 

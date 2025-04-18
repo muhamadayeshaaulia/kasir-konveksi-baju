@@ -57,7 +57,6 @@ body{
     animation: pageLoad 1s ease-out;
 }
 
-
 a{
     color: var(--color-dark);
 }

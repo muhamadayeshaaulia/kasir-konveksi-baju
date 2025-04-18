@@ -55,3 +55,20 @@ function confirmDelete(userId) {
 setTimeout(function(){
     document.getElementById('notification').style.display = 'none';
 }, 3000);
+
+function openProfileModal(src, username, level) {
+    document.getElementById('modalProfileImg').src = src;
+    document.getElementById('modalUsername').textContent = username;
+    document.getElementById('modalLevel').textContent = "Role: " + level;
+    document.getElementById('profileModal').style.display = 'flex';
+    document.getElementById('closeBtn').style.color = '';
+}
+
+function closeProfileModal() {
+    const closeBtn = document.getElementById('closeBtn');
+    closeBtn.style.color = 'red';
+    setTimeout(() => {
+        document.getElementById('profileModal').style.display = 'none';
+        closeBtn.style.color = '';
+    }, 200);
+}
