@@ -20,10 +20,11 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
     <meta name="keywords" content="konveksi, pakaian custom, konveksi murah, konveksi Yesha, konveksi berkualitas, produksi pakaian custom, konveksi untuk event, konveksi untuk bisnis">
     <meta name="author" content="Yesha Konveksi">
     <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="gLCuiRU6JiwV_ZXtwspbx4kRu0A3-A9L_n83Je-E_sg" />
     <meta property="og:title" content="Konveksi Yesha - Layanan Konveksi Berkualitas dengan Harga Terjangkau">
     <meta property="og:description" content="Konveksi Yesha menyediakan layanan konveksi dengan kualitas terbaik dan harga yang sangat terjangkau. Kami menyediakan pakaian custom untuk berbagai kebutuhan Anda.">
     <meta property="og:image" content="./img/erasebg-transformed.png">
-    <meta property="og:url" content="https://www.yesha.ftik.my.id/konveksi-yesha">
+    <meta property="og:url" content="https://konveksi.eduzillen.id/">
     <link rel="icon" href="./img/erasebg-transformed.png" type="image/png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="./style/index.css">
@@ -36,20 +37,54 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
         <?php include('./asset/navbar.php'); ?>
     </div>
-
-    <div id="chat-notification" style="display:none; background:#e0f7fa; border-left:4px solid #00acc1; padding:10px; margin:10px 20px;">
-        💬 Pesan baru di forum chat! <a href="?page=chat" style="margin-left:10px;">Buka Chat</a>
-        </div>
-
-    <?php
-    if (isset($_GET['login']) && $_GET['login'] == 'success') :
-    ?>
-        <div id="notification-login" class="notification-login">
-            <span class="material-icons check-icon">✔️</span>
-            <b style="color: white"><?php echo htmlspecialchars($_SESSION['username']); ?></b>. berhasil login!
-        </div>
-    <?php endif; ?>
     <?php include('./asset/footer.php'); ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginSuccess = urlParams.get('login');
+    if (loginSuccess === 'success') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Login Berhasil!',
+            html: 'Selamat datang, <i><?php echo htmlspecialchars($_SESSION['username']); ?>!</i>',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#3085d6'
+        });
+    }
+</script>
+<script>
+let lastMessageId = null;
+function checkNewChatMessage() {
+  const currentPage = new URLSearchParams(window.location.search).get('page');
+  if (currentPage === 'chat') return;
+
+  fetch("./chat/check_last_message.php")
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.id !== lastMessageId) {
+        if (lastMessageId !== null) {
+          Swal.fire({
+            icon: 'info',
+            title: '💬 Pesan Baru!',
+            text: 'Ada pesan baru di forum chat!',
+            showCancelButton: true,
+            confirmButtonText: 'Buka Chat',
+            cancelButtonText: 'Nanti Saja',
+            confirmButtonColor: '#00acc1',
+            cancelButtonColor: '#aaa'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = '?page=chat';
+            }
+          });
+        }
+        lastMessageId = data.id;
+      }
+    });
+}
+setInterval(checkNewChatMessage, 5000);
+checkNewChatMessage();
+</script>
     <script src="./js/index.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -73,28 +108,5 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             }
         };
     </script>
-    <script>
-let lastMessageId = null;
-
-function checkNewChatMessage() {
-  fetch("./chat/check_last_message.php")
-    .then(res => res.json())
-    .then(data => {
-      if (data && data.id !== lastMessageId) {
-        if (lastMessageId !== null) {
-          const notif = document.getElementById("chat-notification");
-          notif.style.display = "block";
-
-          setTimeout(() => notif.style.display = "none", 10000);
-        }
-
-        lastMessageId = data.id;
-      }
-    });
-}
-
-setInterval(checkNewChatMessage, 5000);
-checkNewChatMessage();
-</script>
 </body>
 </html>

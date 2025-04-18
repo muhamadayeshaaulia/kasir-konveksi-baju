@@ -18,27 +18,7 @@ body {
     box-shadow: 5px 20px 50px #000;
 }
 
-.notification {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #302b63;
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    font-size: 18px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translate(-50%, -60%);
-    animation: slideIn 0.5s forwards, fadeOut 0.5s forwards;
-}
 
-.notification.show {
-    display: block;
-    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
-}
 
 @keyframes slideIn {
     0% {
@@ -140,3 +120,4 @@ button:hover {
 #chk:checked ~ .signup label {
     transform: scale(.6);
 }
+

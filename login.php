@@ -15,10 +15,11 @@ if (empty($_SESSION['csrf_token'])) {
     <meta name="keywords" content="konveksi, pakaian custom, konveksi murah, konveksi Yesha, konveksi berkualitas, produksi pakaian custom, konveksi untuk event, konveksi untuk bisnis">
     <meta name="author" content="Yesha Konveksi">
     <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="gLCuiRU6JiwV_ZXtwspbx4kRu0A3-A9L_n83Je-E_sg" />
     <meta property="og:title" content="Konveksi Yesha - Layanan Konveksi Berkualitas dengan Harga Terjangkau">
     <meta property="og:description" content="Konveksi Yesha menyediakan layanan konveksi dengan kualitas terbaik dan harga yang sangat terjangkau. Kami menyediakan pakaian custom untuk berbagai kebutuhan Anda.">
     <meta property="og:image" content="./img/erasebg-transformed.png">
-    <meta property="og:url" content="https://www.yourdomain.com/konveksi-yesha">
+    <meta property="og:url" content="https://konveksi.eduzillen.id/">
     <link rel="icon" href="./img/erasebg-transformed.png" type="image/png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="./style/login.css">
@@ -66,15 +67,30 @@ if (empty($_SESSION['csrf_token'])) {
         };
     </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php
+<?php
 if (isset($_GET['signup']) && $_GET['signup'] === 'true') {
     echo "
     <script>
+        let timerInterval;
         Swal.fire({
             icon: 'success',
             title: 'Akun berhasil dibuat!',
-            text: 'Silakan login untuk melanjutkan.',
-            confirmButtonColor: '#3085d6'
+            html: 'Menutup otomatis dalam <b>00:00:05</b>',
+            timer: 5000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {
+                const b = Swal.getHtmlContainer().querySelector('b');
+                let remaining = 5;
+                timerInterval = setInterval(() => {
+                    remaining--;
+                    let formatted = '00:00:0' + remaining;
+                    b.textContent = formatted;
+                }, 1000);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
         });
     </script>
     ";
@@ -84,11 +100,26 @@ if (isset($_GET['error'])) {
     $errorMessage = htmlspecialchars($_GET['error']);
     echo "
     <script>
+        let timerInterval;
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: '$errorMessage',
-            confirmButtonColor: '#d33'
+            html: '$errorMessage<br><br>Menutup otomatis dalam <b>00:00:05</b>',
+            timer: 5000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            didOpen: () => {
+                const b = Swal.getHtmlContainer().querySelector('b');
+                let remaining = 5;
+                timerInterval = setInterval(() => {
+                    remaining--;
+                    let formatted = '00:00:0' + remaining;
+                    b.textContent = formatted;
+                }, 1000);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
         });
     </script>
     ";

@@ -94,48 +94,6 @@ p{
 b{
     color: var(--color-dark);
 }
-#chat-notification {
-    display: none;
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    color: black;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
-}
-
-#chat-notification a {
-    color: #00acc1;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 10px;
-    transition: color 0.3s;
-}
-
-#chat-notification a:hover {
-    color: #00796b;
-}
-
-#chat-notification.show {
-    opacity: 1;
-}
-
-#chat-notification.hide {
-    opacity: 0;
-    display: none;
-}
-
-#chat-notification .material-icons {
-    vertical-align: middle;
-    margin-right: 10px;
-}
 
 @media (max-width: 600px) {
     #chat-notification {
@@ -145,65 +103,6 @@ b{
     }
 }
 
-
-.notification-login {
-    display: none;
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background-color: #6C9BCF;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
-}
-
-.notification-login.show {
-    display: flex;
-    animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
-}
-
-.notification-login .check-icon {
-    margin-right: 15px;
-    font-size: 30px;
-    transform: scale(0);
-    animation: checkMark 0.5s ease-out forwards;
-}
-
-@keyframes checkMark {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
 .text-muted{
     color: var(--color-info-dark);
 }
@@ -773,12 +672,6 @@ main .recent-orders a{
         display: none;
         animation: showMenu 0.4s ease forwards;
     }
-    .notification-login {
-        top: 80px;
-        right: 30px;
-        padding: 12px 18px;
-        font-size: 16px;
-    }
 
     @keyframes showMenu {
        to{
@@ -901,12 +794,6 @@ main .recent-orders a{
         left: -100%;
         display: none;
         animation: showMenu 0.4s ease forwards;
-    }
-    .notification-login {
-        top: 80px;
-        right: 15px;
-        padding: 10px 15px;
-        font-size: 14px;
     }
 
     @keyframes showMenu {
