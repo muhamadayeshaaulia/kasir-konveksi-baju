@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $koneksi->real_escape_string($_POST['username']);
     $email = $koneksi->real_escape_string($_POST['email']);
     $level = $koneksi->real_escape_string($_POST['level']);
+
     $level_diizinkan = ['Owner', 'Admin', 'Kasir','Demo'];
     if (!in_array($level, $level_diizinkan)) {
         $level = 'Kasir';
     }
-    
     if (empty($username) || empty($email)) {
         $pesan_error = "Username dan email harus diisi!";
     } else {
@@ -28,6 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($koneksi->query($sql_update)) {
                 $pesan_sukses = "Data pengguna berhasil diperbarui!";
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id) {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['level'] = $level;
+                }
+
             } else {
                 $pesan_error = "Error: " . $koneksi->error;
             }

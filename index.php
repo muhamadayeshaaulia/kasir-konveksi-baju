@@ -1,10 +1,25 @@
 <?php
 session_start();
 include('./app/log_access.php');
+include('./app/app.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
+}
+$user_id = $_SESSION['user_id'];
+$stmt = $pdo->prepare("SELECT username, email, level FROM user WHERE user_id = :user_id");
+$stmt->execute(['user_id' => $user_id]);
+$user = $stmt->fetch();
+
+if ($user) {
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['level'] = $user['level'];
+} else {
+    session_destroy();
+    header("Location: login.php");
+    exit;
 }
 
 $level = $_SESSION['level'];
@@ -107,6 +122,7 @@ checkNewChatMessage();
                 return false;
             }
         };
-    </script>
+
+
 </body>
 </html>

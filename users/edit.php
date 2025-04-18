@@ -63,7 +63,8 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
             <input type="email" name="email" class="form-input" 
                    value="<?= htmlspecialchars($pengguna['email']) ?>" required>
         </div>
-        
+
+        <?php if ($_SESSION['level'] === 'Admin'): ?>
         <div class="form-group">
             <label class="form-label">Hak Akses</label>
             <select name="level" class="form-select">
@@ -73,6 +74,9 @@ $pesan_sukses = isset($_GET['sukses']) ? $_GET['sukses'] : '';
                 <option value="Demo" <?= $pengguna['level'] === 'Demo' ? 'selected' : '' ?>>Demo</option>
             </select>
         </div>
+        <?php else: ?>
+            <input type="hidden" name="level" value="<?= htmlspecialchars($pengguna['level']) ?>">
+        <?php endif; ?>
         
         <div class="button-group">
             <button type="submit" class="btn btn-simpan"
