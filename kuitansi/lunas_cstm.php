@@ -109,8 +109,8 @@ $total_users = count($all_users);
 </div>
 
 
-    <div id="userTableContainer">
-        <table style="width:100%; border-collapse:collapse; text-align:left;">
+    <div id="userTableContainer" style="overflow-x:auto">
+        <table style="min: width: 1500px; border-collapse:collapse; text-align:left;">
             <thead>
                 <tr style="background-color:var(--color-background);">
                     <th style="padding:12px; border:1px solid #ddd;">KODE TRANSAKSI</th>
