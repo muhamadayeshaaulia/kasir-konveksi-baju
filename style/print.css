@@ -58,7 +58,20 @@ form button:hover {
 form button:active {
     background-color:#6C9BCF;
 }
+.kuitansi button {
+    background-color: #6C9BCF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 20px;
+}
 
+.kuitansi button:hover {
+    background-color: #6C9BCF;
+}
 /* Responsif */
 @media (max-width: 768px) {
     form {

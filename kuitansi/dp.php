@@ -1,10 +1,6 @@
 <?php
 require './app/koneksi.php';
-
-// Filter tanggal
 $tanggal_filter = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d');
-
-// Menyusun query SQL dengan prepared statement
 $sql = "SELECT t.id_trx, t.kode_transaksi, t.nama_customer, t.pembelian, t.kategori, p.nama_produk, 
                b.bahan_kain, u.ukuran_bj, c.ukuran_cln, t.jumlah, t.diskon, t.harga, t.tax, t.total, 
                t.subtotal, t.tanggal_transaksi, t.status_pembayaran, t.dp_amount, t.remaining_amount, 
