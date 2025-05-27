@@ -3,10 +3,20 @@ session_start();
 include('./app/log_access.php');
 include('./app/app.php');
 
+// === HANDLE LOGOUT SECARA AMAN ===
+if (isset($_GET['page']) && $_GET['page'] === 'logout') {
+    session_unset();
+    session_destroy();
+    header('Location: login.php');
+    exit();
+}
+
+// Cek login
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
 }
+
 $user_id = $_SESSION['user_id'];
 $stmt = $pdo->prepare("SELECT username, email, level FROM user WHERE user_id = :user_id");
 $stmt->execute(['user_id' => $user_id]);
@@ -19,12 +29,13 @@ if ($user) {
 } else {
     session_destroy();
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 $level = $_SESSION['level'];
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+$currentPage = $_GET['page'] ?? 'dashboard';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

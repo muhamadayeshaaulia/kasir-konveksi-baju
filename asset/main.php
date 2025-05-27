@@ -1,244 +1,206 @@
 <main>
     <?php
     switch ($currentPage) {
-        case'page':
+        case 'page':
             include('page');
             break;
+
         case 'dashboard':
             include('./dashboard/dashboard.php');
             break;
-        case 'users':
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./users/users.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
-        case 'tusers':
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./users/tambah.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
-            case 'eusers':
-                if ($level == 'Admin' || $level == 'Demo') {
-                    include('./users/edit.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-        //case 'pendapatan':
-            //if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
-                //include('./pendapatan/pendapatan.php');
-            //} else {
-                //include("./ErrorDocument/403log.php");
-            //}
 
-            if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir' || $level == 'Demo') {
+        case 'users':
+        case 'tusers':
+        case 'eusers':
+            if ($level == 'Admin' || $level == 'Demo') {
+                if ($currentPage == 'users') {
+                    include('./users/users.php');
+                } elseif ($currentPage == 'tusers') {
+                    include('./users/tambah.php');
+                } else {
+                    include('./users/edit.php');
+                }
+            } else {
+                include("./ErrorDocument/403log.php");
+            }
+            break;
+
+        // case 'pendapatan':
+        //     if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
+        //         include('./pendapatan/pendapatan.php');
+        //     } else {
+        //         include("./ErrorDocument/403log.php");
+        //     }
+        //     break;
+
+        case 'chat':
+            if (in_array($level, ['Admin', 'Owner', 'Kasir', 'Demo'])) {
                 include('./chat/chat.php');
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
+
         case 'kategori':
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/kategori.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
         case 'tkategori':
+        case 'ekategori':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/kategori_tambah.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
-            case 'ekategori':
-                if ($level == 'Admin' || $level == 'Demo') {
-                    include('./kategori/kategori_edit.php');
+                if ($currentPage == 'kategori') {
+                    include('./kategori/kategori.php');
+                } elseif ($currentPage == 'tkategori') {
+                    include('./kategori/kategori_tambah.php');
                 } else {
-                    include("./ErrorDocument/403log.php");
+                    include('./kategori/kategori_edit.php');
                 }
-                break;
+            } else {
+                include("./ErrorDocument/403log.php");
+            }
+            break;
+
         case 'uk_baju':
+        case 'tbaju':
+        case 'ebaju':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_baju.php');
+                if ($currentPage == 'uk_baju') {
+                    include('./kategori/uk_baju.php');
+                } elseif ($currentPage == 'tbaju') {
+                    include('./kategori/uk_baju_tambah.php');
+                } else {
+                    include('./kategori/uk_baju_edit.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
-        case'tbaju';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_baju_tambah.php');
-            }else{
-                include("./ErrorDocument/403log.php");
-            }
-            break;
-        case'ebaju';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_baju_edit.php');
-            } else{
-                include("./ErrorDocument/403log.php");
-            }
-            break;
+
         case 'uk_celana':
+        case 'tcelana':
+        case 'ecelana':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_celana.php');
+                if ($currentPage == 'uk_celana') {
+                    include('./kategori/uk_celana.php');
+                } elseif ($currentPage == 'tcelana') {
+                    include('./kategori/uk_celana_tambah.php');
+                } else {
+                    include('./kategori/uk_celana_edit.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
-        case 'tcelana';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_celana_tambah.php');
-            } else{
-                include("./ErrorDocument/403log.php");
-            }
-            break;
-        case'ecelana';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./kategori/uk_celana_edit.php');
-            }else{
-                include("./ErrorDocument/403log.php");
-            }
-            break;
+
         case 'stok':
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/produk.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
         case 'tstok':
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/produk_tambah.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-            break;
         case 'estok':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/produk_edit.php');
+                if ($currentPage == 'stok') {
+                    include('./stok/produk.php');
+                } elseif ($currentPage == 'tstok') {
+                    include('./stok/produk_tambah.php');
+                } else {
+                    include('./stok/produk_edit.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
-        case 'bahan';
+
+        case 'bahan':
+        case 'tbahan':
+        case 'ebahan':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/bahan.php');
+                if ($currentPage == 'bahan') {
+                    include('./stok/bahan.php');
+                } elseif ($currentPage == 'tbahan') {
+                    include('./stok/bahan_tambah.php');
+                } else {
+                    include('./stok/bahan_edit.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
-        case 'tbahan';
+
+        case 'custom':
+        case 'tcustom':
+        case 'ecustom':
             if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/bahan_tambah.php');
+                if ($currentPage == 'custom') {
+                    include('./stok/custom.php');
+                } elseif ($currentPage == 'tcustom') {
+                    include('./stok/custom_tambah.php');
+                } else {
+                    include('./stok/custom_edit.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
-        break;
-        case 'ebahan';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/bahan_edit.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-        break;
-        case 'custom';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/custom.php');
-            } else {
-                include("./ErrorDocument/403log.php");
-            }
-        break;
-        case 'tcustom';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/custom_tambah.php');
-            } else{
-                include("./ErrorDocument/403log.php");
-            }
-        break;
-        case 'ecustom';
-            if ($level == 'Admin' || $level == 'Demo') {
-                include('./stok/custom_edit.php');
-            }else{
-                include("./ErrorDocument/403log.php");
-            }
-        break;
+            break;
+
         case 'transaksi':
+        case 'pelunasan':
             if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                include('./transaksi/transaksi.php');
+                if ($currentPage == 'transaksi') {
+                    include('./transaksi/transaksi.php');
+                } else {
+                    include('./transaksi/pelunasan.php');
+                }
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
-            case 'pelunasan':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./transaksi/pelunasan.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
+
+        case 'lunas':
+        case 'lcustom':
+        case 'dcustom':
+        case 'dp':
+        case 'print':
+        case 'pcustom':
+            if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
+                switch ($currentPage) {
+                    case 'lunas':
+                        include('./kuitansi/lunas.php');
+                        break;
+                    case 'lcustom':
+                        include('./kuitansi/lunas_cstm.php');
+                        break;
+                    case 'dcustom':
+                        include('./kuitansi/dp_cstm.php');
+                        break;
+                    case 'dp':
+                        include('./kuitansi/dp.php');
+                        break;
+                    case 'print':
+                        include('./kuitansi/print_lunas.php');
+                        break;
+                    case 'pcustom':
+                        include('./kuitansi/print_lunas_cstm.php');
+                        break;
                 }
-                break;
-            case 'lunas':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/lunas.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-            case 'lcustom':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/lunas_cstm.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-            case 'dcustom':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/dp_cstm.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-            case 'dp':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/dp.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-            case 'print':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/print_lunas.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
-            case 'pcustom':
-                if ($level == 'Admin' || $level == 'Kasir' || $level == 'Demo') {
-                    include('./kuitansi/print_lunas_cstm.php');
-                } else {
-                    include("./ErrorDocument/403log.php");
-                }
-                break;
+            } else {
+                include("./ErrorDocument/403log.php");
+            }
+            break;
+
         case 'laporan':
-            if ($level == 'Admin' || $level == 'Owner' || $level == 'Kasir' || $level == 'Demo') {
+            if (in_array($level, ['Admin', 'Owner', 'Kasir', 'Demo'])) {
                 include('./laporan/laporan.php');
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
+
         case 'settings':
             include('./setting/pengaturan.php');
             break;
+
         case 'logout':
             include('./logout.php');
             break;
+            
         default:
-        header("HTTP/1.0 404 Not Found");
-        include('./ErrorDocument/404.php');
+            header("HTTP/1.0 404 Not Found");
+            include('./ErrorDocument/404.php');
             break;
     }
     ?>

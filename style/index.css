@@ -67,11 +67,6 @@ img{
     object-fit: cover;
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
 h1{
     font-weight: 800;
     font-size: 1.8rem;
@@ -449,6 +444,7 @@ main .recent-orders a{
     color: white;
     border-radius: var(--border-radius-1);
 }
+
 
 .right-section .nav .profile{
     display: flex;

@@ -87,13 +87,10 @@ input[readonly] {
     margin-bottom: 25px;
 }
 
-<<<<<<< HEAD
 .bukti-transaksi {
     color:black;
 }
 
-=======
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
 .payment-section .form-group label {
     font-size: 16px;
     color: var(--color-dark);
