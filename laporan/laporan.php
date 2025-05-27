@@ -2,7 +2,6 @@
 require './app/koneksi.php';
 
 $tanggal_filter = $_GET['tanggal'] ?? date('Y-m-d');
-<<<<<<< HEAD
 $jenis_filter = $_GET['filter'] ?? 'harian';
 
 $startDate = $endDate = $tanggal_filter;
@@ -35,8 +34,6 @@ $checkDataQuery = "SELECT COUNT(*) as total FROM transaksi
                    AND DATE(tanggal_transaksi) BETWEEN '$startDate' AND '$endDate'";
 $checkDataResult = mysqli_query($koneksi, $checkDataQuery);
 $dataCount = mysqli_fetch_assoc($checkDataResult)['total'];
-=======
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
 
 $sql = "SELECT 
             t.kode_transaksi,
@@ -65,11 +62,7 @@ $sql = "SELECT
         LEFT JOIN uk_baju u ON t.uk_baju = u.id_ukbaju
         LEFT JOIN uk_celana c ON t.uk_celana = c.id_ukcelana
         WHERE t.status_pembayaran = 'lunas'
-<<<<<<< HEAD
           AND DATE(t.tanggal_transaksi) BETWEEN '$startDate' AND '$endDate'
-=======
-          AND DATE(t.tanggal_transaksi) = '$tanggal_filter'
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
         ORDER BY CAST(SUBSTRING(t.kode_transaksi, 4) AS UNSIGNED) ASC";
 
 $result = mysqli_query($koneksi, $sql);
@@ -81,18 +74,13 @@ foreach ($metode_pembayaran as $metode) {
     $query = "SELECT SUM(t.total) AS total_pendapatan 
               FROM transaksi t 
               WHERE t.status_pembayaran = 'lunas' 
-<<<<<<< HEAD
                 AND DATE(t.tanggal_transaksi) BETWEEN '$startDate' AND '$endDate'
-=======
-                AND DATE(t.tanggal_transaksi) = '$tanggal_filter' 
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
                 AND t.pembayaran = '$metode'";
     $result_total = mysqli_query($koneksi, $query);
     $row_total = mysqli_fetch_assoc($result_total);
     $totals[$metode] = $row_total['total_pendapatan'] ?? 0;
 }
 ?>
-<<<<<<< HEAD
 
 <link rel="stylesheet" href="./style/laporan.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -129,20 +117,6 @@ foreach ($metode_pembayaran as $metode) {
     </button>
 
     <?php if ($dataCount > 0): ?>
-=======
-<link rel="stylesheet" href="./style/laporan.css">
-<main id="laporan-page">
-    <h1>Laporan Transaksi - <?= $tanggal_filter ?></h1>
-    <form method="GET" action="index.php">
-        <input type="hidden" name="page" value="laporan">
-        <input type="date" name="tanggal" value="<?= $tanggal_filter ?>" onchange="this.form.submit()">
-    </form>
-
-    <button class="print-btn" onclick="window.print()"
-    <?php if (!isset($_SESSION['level']) || $_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Owner' && $_SESSION['level'] !=='Kasir') echo 'disabled style="opacity: 0.6; cursor: not-allowed;" title="Hanya admin, owner dan kasir yang bisa melakukan print laporan"'; ?>>
-    🖨 Print</button>
-
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
     <div class="table-container">
         <table>
             <thead>
@@ -193,7 +167,6 @@ foreach ($metode_pembayaran as $metode) {
                     </tr>
                 <?php endwhile; ?>
             </tbody>
-<<<<<<< HEAD
             <tfoot>
                 <tr><td colspan="2" style="text-align: right; font-weight: bold;">Total Cash</td><td colspan="2">Rp <?= number_format($totals['cash'], 0, ',', '.') ?></td></tr>
                 <tr><td colspan="2" style="text-align: right; font-weight: bold;">Total Transfer</td><td colspan="2">Rp <?= number_format($totals['transfer'], 0, ',', '.') ?></td></tr>
@@ -255,26 +228,3 @@ function ubahModeDatepicker() {
 
 ubahModeDatepicker();
 </script>
-=======
-            <tfoot >
-                <tr>
-                    <td colspan="2" style="text-align: right; font-weight: bold;">Total Cash</td>
-                    <td colspan="2">Rp <?= number_format($totals['cash'], 0, ',', '.') ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right; font-weight: bold;">Total Transfer</td>
-                    <td colspan="2">Rp <?= number_format($totals['transfer'], 0, ',', '.') ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right; font-weight: bold;">Total QRIS</td>
-                    <td colspan="2">Rp <?= number_format($totals['qris'], 0, ',', '.') ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right; font-weight: bold; color: var(--color-success);">Total Semua</td>
-                    <td colspan="2"><strong>Rp <?= number_format(array_sum($totals), 0, ',', '.') ?></strong></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-</main>
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e

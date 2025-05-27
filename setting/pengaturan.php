@@ -155,11 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-group">
             <label>Foto Profil:</label><br>
             <?php if (!empty($user['image'])): ?>
-<<<<<<< HEAD
            <img src="uploads/user/<?= $user['image'] ?>?v=<?= time() ?>" class="round-profile">
-=======
-            <img src="uploads/user/<?= $user['image'] ?>" width="80" style="border-radius: 50px; max-width: 100px;"><br>
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
             <?php endif; ?>
             <input type="file" name="image" accept="image/*">
         </div>

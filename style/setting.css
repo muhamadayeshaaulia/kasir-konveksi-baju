@@ -121,8 +121,6 @@ main.form-container h1 {
     color: #fff;
 }
 
-/* Image Preview */
-<<<<<<< HEAD
 .round-profile {
     width: 100px;        /* Lebar tetap */
     height: 100px;       /* Tinggi sama dengan lebar supaya bulat */
@@ -131,17 +129,6 @@ main.form-container h1 {
     object-position: center; /* Posisikan tengah gambar */
     display: block;      /* Supaya mudah diatur */
 }
-
-
-=======
-img {
-    margin-bottom: 10px;
-    border-radius: 50px;
-    height: auto;
-    display: block;
-}
-
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
 /* Preview baru yang muncul setelah pilih file */
 #preview {
     margin-top: 10px;

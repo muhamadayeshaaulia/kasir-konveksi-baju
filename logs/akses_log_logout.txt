@@ -263,3 +263,7 @@ IP: ::1 | Waktu: 2025-05-27 17:03:32 | Halaman: logout | User-Agent: Mozilla/5.0
 IP: ::1 | Waktu: 2025-05-27 17:16:45 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 =======
 >>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
+IP: ::1 | Waktu: 2025-05-27 17:58:39 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-05-27 17:59:59 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Guest
+IP: ::1 | Waktu: 2025-05-27 18:02:23 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
+IP: ::1 | Waktu: 2025-05-27 18:03:20 | Halaman: logout | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Guest

@@ -17,12 +17,10 @@
             <span class="material-icons-sharp">dashboard</span>
             <h3>Dashboard</h3>
         </a>
-
-<<<<<<< HEAD
         <?php if ($level == 'Admin' || $level == 'Demo'): ?>
-=======
+
         <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo'): ?>
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
+
             <?php
             require_once 'app/koneksi.php';
             
@@ -41,12 +39,8 @@
                 <span class="message-count"><?php echo $total_user; ?></span>
             </a>
         <?php endif; ?>
-
-<<<<<<< HEAD
+        
         <!--<?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo'): ?>
-=======
-        <?php if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo'): ?>
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
             <a href="index.php?page=pendapatan" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 echo ($currentPage == 'pendapatan') ? 'active' : '';
@@ -54,12 +48,9 @@
                 <span class="material-icons-sharp">money</span>
                 <h3>Pendapatan</h3>
             </a>
-<<<<<<< HEAD
         <?php endif; ?>-->
-=======
+        
         <?php endif; ?>
->>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
-
         <?php if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir' || $level == 'Demo'): ?>
             <a href="index.php?page=chat" class="<?php 
                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
