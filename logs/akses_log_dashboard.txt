@@ -1492,6 +1492,7 @@ IP: ::1 | Waktu: 2025-05-12 18:10:02 | Halaman: dashboard | User-Agent: Mozilla/
 IP: ::1 | Waktu: 2025-05-12 18:44:55 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
 IP: ::1 | Waktu: 2025-05-12 18:51:49 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
 IP: ::1 | Waktu: 2025-05-12 18:53:29 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
+<<<<<<< HEAD
 IP: ::1 | Waktu: 2025-05-24 01:47:36 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-24 01:47:53 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-24 01:48:44 | Halaman: dashboard | User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/17.5 Mobile/15A5370a Safari/602.1 | Perangkat: Mobile Device | Role: Admin
@@ -1540,3 +1541,5 @@ IP: ::1 | Waktu: 2025-05-27 17:23:44 | Halaman: dashboard | User-Agent: Mozilla/
 IP: ::1 | Waktu: 2025-05-27 17:23:50 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-27 17:30:46 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Guest
 IP: ::1 | Waktu: 2025-05-27 17:30:52 | Halaman: dashboard | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
+=======
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e

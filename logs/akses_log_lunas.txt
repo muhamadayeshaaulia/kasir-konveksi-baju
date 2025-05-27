@@ -627,6 +627,7 @@ IP: ::1 | Waktu: 2025-05-11 17:48:28 | Halaman: lunas | User-Agent: Mozilla/5.0 
 IP: ::1 | Waktu: 2025-05-12 17:08:07 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-12 18:53:23 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
 IP: ::1 | Waktu: 2025-05-12 18:57:11 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
+<<<<<<< HEAD
 IP: ::1 | Waktu: 2025-05-24 01:56:31 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Owner
 IP: ::1 | Waktu: 2025-05-24 01:58:26 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-24 01:58:34 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
@@ -641,3 +642,5 @@ IP: ::1 | Waktu: 2025-05-27 10:14:19 | Halaman: lunas | User-Agent: Mozilla/5.0 
 IP: ::1 | Waktu: 2025-05-27 10:18:10 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-27 10:19:33 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-27 10:23:44 | Halaman: lunas | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
+=======
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e

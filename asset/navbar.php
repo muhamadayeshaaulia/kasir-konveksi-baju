@@ -47,7 +47,11 @@ $result = mysqli_query($koneksi, $transaksiQuery);
                     <small class="text-muted"><?php echo htmlspecialchars($level); ?></small>
                     </div>
                     <div class="profile-photo">
+<<<<<<< HEAD
                         <img src="<?php echo htmlspecialchars($profilePhoto) . '?v=' . time(); ?>" alt="Foto Profil" onclick="openProfileModal(this.src + '?v=' + new Date().getTime())" style="cursor:pointer;">
+=======
+                        <img src="<?php echo htmlspecialchars($profilePhoto); ?>" alt="Foto Profil" onclick="openProfileModal(this.src)" style="cursor:pointer;">
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
                     </div>
                 </div>
 

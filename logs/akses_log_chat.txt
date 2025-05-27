@@ -247,9 +247,12 @@ IP: ::1 | Waktu: 2025-05-12 17:51:51 | Halaman: chat | User-Agent: Mozilla/5.0 (
 IP: ::1 | Waktu: 2025-05-12 18:01:15 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-12 18:01:16 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-12 18:51:37 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Owner
+<<<<<<< HEAD
 IP: ::1 | Waktu: 2025-05-24 01:56:33 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Owner
 IP: ::1 | Waktu: 2025-05-24 01:57:16 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-27 09:43:18 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-27 09:46:08 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-27 10:14:15 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Demo
 IP: ::1 | Waktu: 2025-05-27 10:15:03 | Halaman: chat | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
+=======
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e

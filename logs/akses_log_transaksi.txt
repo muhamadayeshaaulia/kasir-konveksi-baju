@@ -984,6 +984,7 @@ IP: ::1 | Waktu: 2025-05-11 17:48:58 | Halaman: transaksi | User-Agent: Mozilla/
 IP: ::1 | Waktu: 2025-05-11 18:07:15 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Demo
 IP: ::1 | Waktu: 2025-05-12 16:36:22 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-12 18:10:26 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Admin
+<<<<<<< HEAD
 IP: ::1 | Waktu: 2025-05-24 01:57:21 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-27 09:43:23 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
 IP: ::1 | Waktu: 2025-05-27 09:46:10 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Kasir
@@ -1014,3 +1015,5 @@ IP: ::1 | Waktu: 2025-05-27 17:46:44 | Halaman: transaksi | User-Agent: Mozilla/
 IP: ::1 | Waktu: 2025-05-27 17:47:47 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-27 17:47:57 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
 IP: ::1 | Waktu: 2025-05-27 17:48:25 | Halaman: transaksi | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 | Perangkat: Laptop/Desktop | Role: Admin
+=======
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e

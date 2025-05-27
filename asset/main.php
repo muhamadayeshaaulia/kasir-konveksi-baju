@@ -8,32 +8,53 @@
             include('./dashboard/dashboard.php');
             break;
         case 'users':
+<<<<<<< HEAD
             if ($level == 'Admin' || $level == 'Demo') {
+=======
+            if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
                 include('./users/users.php');
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
         case 'tusers':
+<<<<<<< HEAD
             if ($level == 'Admin' || $level == 'Demo') {
+=======
+            if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
                 include('./users/tambah.php');
             } else {
                 include("./ErrorDocument/403log.php");
             }
             break;
             case 'eusers':
+<<<<<<< HEAD
                 if ($level == 'Admin' || $level == 'Demo') {
+=======
+                if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
                     include('./users/edit.php');
                 } else {
                     include("./ErrorDocument/403log.php");
                 }
                 break;
+<<<<<<< HEAD
         //case 'pendapatan':
             //if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
                 //include('./pendapatan/pendapatan.php');
             //} else {
                 //include("./ErrorDocument/403log.php");
             //}
+=======
+        case 'pendapatan':
+            if ($level == 'Admin' || $level == 'Owner' || $level == 'Demo') {
+                include('./pendapatan/pendapatan.php');
+            } else {
+                include("./ErrorDocument/403log.php");
+            }
+>>>>>>> 70f1bb4aa6e09dbf458f3eac02249cc90b5ca55e
             break;
         case 'chat':
             if ($level == 'Admin' || $level =='Owner' || $level == 'Kasir' || $level == 'Demo') {
