@@ -1,0 +1,7 @@
+IP: ::1 | Waktu: 2025-04-11 20:21:01 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:21:05 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:21:25 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:22:00 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:22:02 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:22:07 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir
+IP: ::1 | Waktu: 2025-04-11 20:22:18 | Halaman: setting | User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 | Perangkat: Laptop/Desktop | Role: Kasir

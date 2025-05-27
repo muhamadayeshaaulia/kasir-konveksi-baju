@@ -1,0 +1,152 @@
+@media (max-width: 768px) {
+    .desktop-view {
+        display: none !important;
+    }
+    .dropdown {
+        display: inline-block !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .dropdown {
+        display: none !important;
+    }
+    .desktop-view {
+        display: flex !important;
+    }
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s;
+}
+.dropdown-content a.active {
+    font-weight: bold;
+    background-color: #e9e9e9;
+}
+.dropdown-content {
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+button, .desktop-view a {
+    transition: all 0.3s ease;
+}
+
+button:hover, .desktop-view a:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+@media (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    button {
+        padding: 4px 8px !important;
+        font-size: 12px;
+    }
+}
+#liveSearch {
+    transition: all 0.3s ease;
+}
+
+#liveSearch:focus {
+    outline: none;
+    border-color: #9C27B0 !important;
+    box-shadow: 0 0 0 2px rgba(156, 39, 176, 0.2);
+}
+.img-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.img-thumb:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-box img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
+
+.close-baru {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.close-baru:hover {
+  color: red;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+    .calendar-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        background-color: #f4f4f4;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .calendar-container label {
+        font-weight: 600;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .calendar-container input[type="date"] {
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        background-color: #fff;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .calendar-container input[type="date"]:hover,
+    .calendar-container input[type="date"]:focus {
+        border-color: #2196F3;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    }

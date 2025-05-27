@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --color-primary: #6C9BCF;
+    --color-primary-dark: #537aa0;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #ffffff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-border: #ccc;
+    --color-text: #363949;
+
+    --card-border-radius: 2rem;
+    --border-radius: 0.5rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --transition: 0.3s ease;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* Dark mode (jika diperlukan) */
+.dark-mode-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+
+/* Form Container */
+main.form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background-color: var(--color-white);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: background-color var(--transition);
+}
+
+/* Headings */
+main.form-container h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-primary);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    transition: border var(--transition), background-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Alerts */
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: var(--color-success);
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+/* Image Preview */
+.round-profile {
+    width: 100px;        /* Lebar tetap */
+    height: 100px;       /* Tinggi sama dengan lebar supaya bulat */
+    border-radius: 50%;  /* Bulat sempurna */
+    object-fit: cover;   /* Potong bagian yang kelebihan supaya proporsional */
+    object-position: center; /* Posisikan tengah gambar */
+    display: block;      /* Supaya mudah diatur */
+}
+
+
+/* Preview baru yang muncul setelah pilih file */
+#preview {
+    margin-top: 10px;
+    display: none;
+}
+
+/* Responsive (opsional) */
+@media (max-width: 600px) {
+    main.form-container {
+        margin: 15px;
+        padding: 20px;
+    }
+}
