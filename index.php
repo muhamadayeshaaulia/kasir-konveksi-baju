@@ -1,4 +1,6 @@
 <?php
+ob_start(); // ✅ MENCEGAH HEADER ERROR
+
 session_start();
 include('./app/log_access.php');
 include('./app/app.php');
@@ -61,54 +63,56 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 
         <?php include('./asset/navbar.php'); ?>
     </div>
-    <?php include('./asset/footer.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const loginSuccess = urlParams.get('login');
-    if (loginSuccess === 'success') {
-        Swal.fire({
-            icon: 'success',
-            title: 'Login Berhasil!',
-            html: 'Selamat datang, <i><?php echo htmlspecialchars($_SESSION['username']); ?>!</i>',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#3085d6'
-        });
-    }
-</script>
-<script>
-let lastMessageId = null;
-function checkNewChatMessage() {
-  const currentPage = new URLSearchParams(window.location.search).get('page');
-  if (currentPage === 'chat') return;
 
-  fetch("./chat/check_last_message.php")
-    .then(res => res.json())
-    .then(data => {
-      if (data && data.id !== lastMessageId) {
-        if (lastMessageId !== null) {
-          Swal.fire({
-            icon: 'info',
-            title: '💬 Pesan Baru!',
-            text: 'Ada pesan baru di forum chat!',
-            showCancelButton: true,
-            confirmButtonText: 'Buka Chat',
-            cancelButtonText: 'Nanti Saja',
-            confirmButtonColor: '#00acc1',
-            cancelButtonColor: '#aaa'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = '?page=chat';
-            }
-          });
+    <?php include('./asset/footer.php'); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginSuccess = urlParams.get('login');
+        if (loginSuccess === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Berhasil!',
+                html: 'Selamat datang, <i><?php echo htmlspecialchars($_SESSION['username']); ?>!</i>',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#3085d6'
+            });
         }
-        lastMessageId = data.id;
-      }
-    });
-}
-setInterval(checkNewChatMessage, 5000);
-checkNewChatMessage();
-</script>
+    </script>
+    <script>
+        let lastMessageId = null;
+        function checkNewChatMessage() {
+            const currentPage = new URLSearchParams(window.location.search).get('page');
+            if (currentPage === 'chat') return;
+
+            fetch("./chat/check_last_message.php")
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.id !== lastMessageId) {
+                        if (lastMessageId !== null) {
+                            Swal.fire({
+                                icon: 'info',
+                                title: '💬 Pesan Baru!',
+                                text: 'Ada pesan baru di forum chat!',
+                                showCancelButton: true,
+                                confirmButtonText: 'Buka Chat',
+                                cancelButtonText: 'Nanti Saja',
+                                confirmButtonColor: '#00acc1',
+                                cancelButtonColor: '#aaa'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '?page=chat';
+                                }
+                            });
+                        }
+                        lastMessageId = data.id;
+                    }
+                });
+        }
+        setInterval(checkNewChatMessage, 5000);
+        checkNewChatMessage();
+    </script>
     <script src="./js/index.js"></script>
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
@@ -124,3 +128,5 @@ checkNewChatMessage();
     </script>
 </body>
 </html>
+
+<?php ob_end_flush(); ?>
