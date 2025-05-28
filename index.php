@@ -1,5 +1,5 @@
 <?php
-ob_start(); // ✅ MENCEGAH HEADER ERROR
+ob_start();
 
 session_start();
 include('./app/log_access.php');

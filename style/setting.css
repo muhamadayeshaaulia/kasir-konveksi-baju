@@ -129,7 +129,6 @@ main.form-container h1 {
     object-position: center; /* Posisikan tengah gambar */
     display: block;      /* Supaya mudah diatur */
 }
-/* Preview baru yang muncul setelah pilih file */
 #preview {
     margin-top: 10px;
     display: none;
