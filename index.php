@@ -3,7 +3,6 @@ session_start();
 include('./app/log_access.php');
 include('./app/app.php');
 
-// === HANDLE LOGOUT SECARA AMAN ===
 if (isset($_GET['page']) && $_GET['page'] === 'logout') {
     session_unset();
     session_destroy();
@@ -11,7 +10,6 @@ if (isset($_GET['page']) && $_GET['page'] === 'logout') {
     exit();
 }
 
-// Cek login
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
